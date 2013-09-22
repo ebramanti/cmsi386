@@ -5,7 +5,7 @@ function change(cents) {
     var remaining = cents;
     for (i = 0; i < usCoinDenominations.length; i++) {
         s = usCoinDenominations[i];
-        partialSolution = [Math.floor(remaining / s), remaining % s];
+        partialSolution = [Math.floor(remaining / s), remaining % s];  //ask toal
         results.push(partialSolution[0]);
         remaining = partialSolution[1];
     }
