@@ -12,6 +12,6 @@ function change(cents) {
     return results;
 }
 
-function strip_vowels(s){
-    return s.translate(None, "aeiouAEIOU")
+function strip_vowels(s) {
+    return s.replace(/[aeiou]/ig, '');
 }
