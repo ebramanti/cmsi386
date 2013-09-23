@@ -53,11 +53,14 @@ def interleave(a, b):
 #   Problem 7
 def stutter(list1):
 	result = []
-	degreeOfStutter = 2
 	for i in list1:
-		for j in range(degreeOfStutter):
+		for j in range(2):
 			result.append(i)
 	return result
+
+#   Alternative to Problem 7 method
+def stutter2(s):
+    return interleave(s,s)
 
 
 
