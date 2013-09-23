@@ -12,9 +12,8 @@ def change(cents):
     results = []
     remaining = cents
     for s in usCoinDenominations:
-        partialSolution = divmod(remaining, s)
-        results.append(partialSolution[0])
-        remaining = partialSolution[1]
+        coins, remaining = divmod(remaining, s)
+        results.append(coins)
     
     return tuple(results)
 
