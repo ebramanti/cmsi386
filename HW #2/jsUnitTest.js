@@ -30,15 +30,15 @@ $(function () {
 
     test("Strip Vowels Tests", function () {
         deepEqual(stripVowels("Hello, world"), "Hll, wrld");
-        deepEqual(strip_vowels("AEIOU"), "");
-        deepEqual(strip_vowels("aeiou"), "");
-        deepEqual(strip_vowels("Zane Quincy Kansil"), "Zn Qncy Knsl");
-        deepEqual(strip_vowels("Tom Marvolo Riddle"), "Tm Mrvl Rddl");
-        deepEqual(strip_vowels("AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"), "BbCcDdFfGgHhJjKkLlMmNnPpQqRrSsTtVvWwXxYyZz");
-        deepEqual(strip_vowels("Ballin like I got Oprah Winfrey money~"), "Blln lk  gt prh Wnfry mny~");
-        deepEqual(strip_vowels("Sweet home Alabama"), "Swt hm lbm");
-        deepEqual(strip_vowels("Once upon a time there was a big huge giant Moon up there."), "nc pn  tm thr ws  bg hg gnt Mn p thr.");
-        deepEqual(strip_vowels("Toy Story 2"), "Ty Stry 2");
+        deepEqual(stripVowels("AEIOU"), "");
+        deepEqual(stripVowels("aeiou"), "");
+        deepEqual(stripVowels("Zane Quincy Kansil"), "Zn Qncy Knsl");
+        deepEqual(stripVowels("Tom Marvolo Riddle"), "Tm Mrvl Rddl");
+        deepEqual(stripVowels("AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"), "BbCcDdFfGgHhJjKkLlMmNnPpQqRrSsTtVvWwXxYyZz");
+        deepEqual(stripVowels("Ballin like I got Oprah Winfrey money~"), "Blln lk  gt prh Wnfry mny~");
+        deepEqual(stripVowels("Sweet home Alabama"), "Swt hm lbm");
+        deepEqual(stripVowels("Once upon a time there was a big huge giant Moon up there."), "nc pn  tm thr ws  bg hg gnt Mn p thr.");
+        deepEqual(stripVowels("Toy Story 2"), "Ty Stry 2");
         deepEqual(stripVowels("3.14159"), "3.14159");  
         // More needed
     });
@@ -61,8 +61,20 @@ $(function () {
     // Test stutter here
 
     test("Word Count Tests", function () {
-        deepEqual(wordCount)
+        deepEqual(wordCount("I'm here fireman"), {"I'm":1, "here":1, "fireman":1});
+        deepEqual(wordCount("na na na na-na na na NA BATMAN!"), {"na": 8, "batman":1});
+        deepEqual(wordCount("On to the next on on to the next on... "), {"on":4, "to":2, "the":2, "next":2});
+        deepEqual(wordCount(""), {});
+        deepEqual(wordCount("I can'''t do that, I just can''t can't do that."), {"i":2, "can'''t":1, "do":2, "that":2, "just":1, "can''t":1, "can't":1});
+        deepEqual(wordCount("Good\nMorning!"), {"good":1, "morning":1});
 
         //  Add more
     });
 });
+
+
+
+
+
+
+
