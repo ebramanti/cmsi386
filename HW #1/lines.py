@@ -1,5 +1,5 @@
 #   Problem 8
-import sys, string
+import sys
 
 lineCounter = 0
 textFile = sys.argv[1]
