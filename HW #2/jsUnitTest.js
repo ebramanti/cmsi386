@@ -10,7 +10,17 @@ $(function () {
 
     test("Change Tests", function () {
         deepEqual(change(97), [3, 2, 0, 2]);
+        deepEqual(change(100), [4, 0, 0, 0]);
+        deepEqual(change(13), [0, 1, 0, 3]);
+        deepEqual(change(0), [0, 0, 0, 0]);
+        deepEqual(change(1000), [250, 0, 0, 0]);
+        deepEqual(change(97), [3, 2, 0, 1]);
+        deepEqual(change(41), [1, 1, 1, 1]);
         deepEqual(change(8), [0, 0, 1, 3]);
+        deepEqual(change(8), [0, 0, 1, 3]);
+        deepEqual(change(8), [0, 0, 1, 3]);
+        deepEqual(change(8), [0, 0, 1, 3]);
+        deepEqual(change(9007199254740992), [360287970189639, 1, 1, 2]);
         // More needed
     });
 

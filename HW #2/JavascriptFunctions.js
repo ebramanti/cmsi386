@@ -1,5 +1,6 @@
 function change(cents) {
     //if cents < 0: raise ValueError("Not an int > 0.")
+    //if cents isBoolean: raise ValueError("Input unrounded number of cents (float found)")
     var usCoinDenominations = [25, 10, 5, 1];
     var results = [];
     var remaining = cents;
