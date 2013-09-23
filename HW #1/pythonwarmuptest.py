@@ -88,6 +88,7 @@ class TestGettingStartedFunctions(unittest.TestCase):
 
 
     def test_stutter(self):
+        self.assertEqual( stutter([]), [])
         self.assertEqual( stutter(['a','b','c']), ['a','a','b','b','c','c'])
         self.assertEqual( stutter(['a','a','a']), ['a','a','a','a','a','a'])
         self.assertEqual( stutter([1,2,3]), [1,1,2,2,3,3])
