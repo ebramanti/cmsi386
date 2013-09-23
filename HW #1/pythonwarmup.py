@@ -29,13 +29,12 @@ def scramble(s):
 
 #   Problem 4
 def powers_of_two(max):
-    power, current = 0, 1
+    current = 1
     while True:
-        current = 2 ** power
         if current > max:
             break;
         yield current
-        power += 1
+        current *= 2
 
 #   Problem 5
 def powers(base, max):
