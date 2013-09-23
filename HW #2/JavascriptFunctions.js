@@ -17,6 +17,29 @@ function strip_vowels(s) {
     return s.replace(/[aeiou]/ig, '');
 }
 
+function scramble(s) {
+    return -1;
+}
+
+function powersOfTwo(max) {
+    return -1;
+}
+
+function powers(base, max) {
+    return -1;
+}
+
+function interleave(array1, array2) {
+    return -1;
+}
+
+function stutter(arrayA) {
+    return -1;
+} 
+
+function wordCount(s) {
+    return -1;
+}
 function scramble(s) { //still testing to see if true, unbiased scramble.
     result = s.split("");
     for(var i = 0; i < s.length; i++) {
