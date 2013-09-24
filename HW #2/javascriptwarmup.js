@@ -38,11 +38,12 @@ function interleave(array1, array2) {
     while (result.length < array1.length + array2.length) {
         if (i < array1.length) {
             result.push(array1[i]);
+            i++;
         }
         if (j < array2.length) {
             result.push(array2[j]);
+            j++;
         }
-        i++, j++;
     }
     return '[' + result + ']'; //check to see if brackets are necessary
 }
