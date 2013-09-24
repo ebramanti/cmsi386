@@ -1,5 +1,5 @@
 function change(cents) {
-    if (cents< 0) {
+    if (cents < 0) {
         throw "Not an integer greater than 0.";
     }
     //if cents isBoolean: raise ValueError("Input unrounded number of cents (float found)")
