@@ -1,6 +1,7 @@
+//  Problem #1
 function change(cents) {
     if (cents < 0) {
-        throw "Not an integer greater than 0.";
+        throws "Negative integer argument found.";
     }
     //if cents isBoolean: raise ValueError("Input unrounded number of cents (float found)")
     var usCoinDenominations = [25, 10, 5, 1];
@@ -15,43 +16,56 @@ function change(cents) {
     return results;
 }
 
+//  Problem #2
 function stripVowels(s) {
     return s.replace(/[aeiou]/ig, '');
 }
 
+//  Problem #3
 function scramble(s) {
     return s.split("").sort(function(){return Math.random() - 0.5;}).join("");
 }
 
-function powersOfTwo(max) {
-    return -1;
+//  Problem #4
+function powersOfTwo(max, f) {
+    for (var i = 1; i <= max; i *= 2) {
+        f(i);
+    }
 }
 
-function powers(base, max) {
-    return -1;
+//  Problem #5
+function powers(base, max, f) {
+    for (var i = 1; i <= max; i *= base) {
+        f(i);
+    }
 }
 
-function interleave(array1, array2) {
+//  Problem #6
+function interleave(a, b) {
     var result = [];
     var i = 0;
     var j = 0;
-    while (result.length < array1.length + array2.length) {
-        if (i < array1.length) {
-            result.push(array1[i]);
+    while (result.length < a.length + b.length) {
+        if (i < a.length) {
+            result.push(a[i]);
             i++;
         }
-        if (j < array2.length) {
-            result.push(array2[j]);
+        if (j < b.length) {
+            result.push(b[j]);
             j++;
         }
     }
     return '[' + result + ']'; //check to see if brackets are necessary
 }
 
-function stutter(arrayA) {
-    return interleave(arrayA, arrayA);
+//  Problem #7
+function stutter(array) {
+    return interleave(array, array);
 } 
 
+//  Problem #8
 function wordCount(s) {
     return -1;
 }
+
+// + 1 for Zane & Ed for semicolons

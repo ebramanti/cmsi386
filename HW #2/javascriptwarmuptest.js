@@ -20,10 +20,10 @@ $(function () {
         deepEqual(change(5), [0, 0, 1, 0]);
         deepEqual(change(10), [0, 1, 0, 0]);
         deepEqual(change(25), [1, 0, 0, 0]);
-        throws(change(-10), TypeError, "Negative integer argument found");
-        throws(change(-47), TypeError, "Negative integer argument found");
-        throws(change(11.3), TypeError, "Negative integer argument found");
-        throws(change((13/7)), TypeError, "Negative integer argument found");
+        throws(function() {change(-10)}, TypeError, "Negative integer argument found.");
+        throws(function() {change(-47)}, TypeError, "Negative integer argument found.");
+        throws(function() {change(11.3)}, TypeError, "Negative integer argument found.");
+        throws(function() {change((13/7))}, TypeError, "Negative integer argument found.");
         deepEqual(change(9007199254740992), [360287970189639, 1, 1, 2]);
         // More needed
     });
