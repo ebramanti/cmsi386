@@ -20,7 +20,7 @@ function stripVowels(s) {
 }
 
 function scramble(s) {
-    return -1;
+    return s.split("").sort(function(){return Math.random() - 0.5;}).join("");
 }
 
 function powersOfTwo(max) {
@@ -53,14 +53,4 @@ function stutter(arrayA) {
 
 function wordCount(s) {
     return -1;
-}
-function scramble(s) { //still testing to see if true, unbiased scramble.
-    result = s.split("");
-    for(var i = 0; i < s.length; i++) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var scrambler = result[i];
-        result[i] = result[j];
-        result[j] = scrambler;
-    }
-    return result.join("");
 }
