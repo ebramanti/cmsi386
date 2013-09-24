@@ -30,11 +30,23 @@ function powers(base, max) {
 }
 
 function interleave(array1, array2) {
-    return -1;
+    var result = [];
+    var i = 0;
+    var j = 0;
+    while (result.length < array1.length + array2.length) {
+        if (i < array1.length) {
+            result.push(array1[i]);
+        }
+        if (j < array2.length) {
+            result.push(array2[j]);
+        }
+        i++, j++;
+    }
+    return '[' + result + ']';
 }
 
 function stutter(arrayA) {
-    return -1;
+    return interleave(arrayA, arrayA);
 } 
 
 function wordCount(s) {
