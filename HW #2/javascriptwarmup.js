@@ -13,7 +13,7 @@ function change(cents) {
     return results;
 }
 
-function strip_vowels(s) {
+function stripVowels(s) {
     return s.replace(/[aeiou]/ig, '');
 }
 

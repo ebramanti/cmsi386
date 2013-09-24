@@ -13,8 +13,8 @@ $(function () {
         deepEqual(change(100), [4, 0, 0, 0]);
         deepEqual(change(13), [0, 1, 0, 3]);
         deepEqual(change(0), [0, 0, 0, 0]);
-        deepEqual(change(1000), [250, 0, 0, 0]);
-        deepEqual(change(97), [3, 2, 0, 1]);
+        deepEqual(change(1000), [40, 0, 0, 0]);
+        deepEqual(change(97), [3, 2, 0, 2]);
         deepEqual(change(41), [1, 1, 1, 1]);
         deepEqual(change(1), [0, 0, 0, 1]);
         deepEqual(change(5), [0, 0, 1, 0]);
@@ -51,14 +51,20 @@ $(function () {
     });
 
     test("Powers of Two Tests", function () {
-        // Implement these
+        expect(0);          //Means tests are needed but will not crash tester.
     });
 
-    // Test powers here
+    test("Powers of n Tests", function () {
+        expect(0);         
+    });
 
-    // Test interleave here
+    test("Interleave Tests", function () {
+        expect(0);
+    });
 
-    // Test stutter here
+    test("Stutter Tests", function () {
+        expect(0);
+    });
 
     test("Word Count Tests", function () {
         deepEqual(wordCount("I'm here fireman"), {"I'm":1, "here":1, "fireman":1});
