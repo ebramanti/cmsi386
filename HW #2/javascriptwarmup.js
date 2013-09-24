@@ -42,7 +42,7 @@ function interleave(array1, array2) {
         }
         i++, j++;
     }
-    return '[' + result + ']';
+    return '[' + result + ']'; //check to see if brackets are necessary
 }
 
 function stutter(arrayA) {
