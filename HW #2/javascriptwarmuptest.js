@@ -9,22 +9,21 @@ $(function () {
     };
 
     test("Change Tests", function () {
-        deepEqual(change(97), [3, 2, 0, 2]);
-        deepEqual(change(100), [4, 0, 0, 0]);
-        deepEqual(change(13), [0, 1, 0, 3]);
         deepEqual(change(0), [0, 0, 0, 0]);
-        deepEqual(change(1000), [40, 0, 0, 0]);
-        deepEqual(change(97), [3, 2, 0, 2]);
-        deepEqual(change(41), [1, 1, 1, 1]);
         deepEqual(change(1), [0, 0, 0, 1]);
         deepEqual(change(5), [0, 0, 1, 0]);
-        deepEqual(change(10), [0, 1, 0, 0]);
+        deepEqual(change(13), [0, 1, 0, 3]);
+/*5*/   deepEqual(change(10), [0, 1, 0, 0]);
         deepEqual(change(25), [1, 0, 0, 0]);
-        throws(change(-10), TypeError, "Negative integer argument found");
-        throws(change(-47), TypeError, "Negative integer argument found");
-        throws(change(11.3), TypeError, "Negative integer argument found");
-        throws(change((13/7)), TypeError, "Negative integer argument found");
-        deepEqual(change(9007199254740992), [360287970189639, 1, 1, 2]);
+        deepEqual(change(97), [3, 2, 0, 2]);
+        deepEqual(change(100), [4, 0, 0, 0]);
+        deepEqual(change(1000), [40, 0, 0, 0]);
+/*A*/   deepEqual(change(41), [1, 1, 1, 1]);
+        throws(function() {change(-10)}, IllegalArgumentException);
+        throws(function() {change(-47)}, IllegalArgumentException);
+        throws(function() {change(11.3)}, IllegalArgumentException);
+        throws(function() {change(13/7)}, IllegalArgumentException);
+/*F*/   deepEqual(change(9007199254740992), [360287970189639, 1, 1, 2]);
         // More needed
     });
 

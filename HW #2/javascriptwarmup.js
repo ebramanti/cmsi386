@@ -1,7 +1,10 @@
 //  Problem #1
 function change(cents) {
     if (cents < 0) {
-        //throws "Negative integer argument found.";
+        throw new IllegalArgumentException(cents);
+    }
+    else if (cents % 1 !== 0) {
+        throw new IllegalArgumentException(cents);
     }
     //if cents isBoolean: raise ValueError("Input unrounded number of cents (float found)")
     var usCoinDenominations = [25, 10, 5, 1];
@@ -83,7 +86,14 @@ function wordCount(s) {
     return result;
 }
 
-
+function IllegalArgumentException(value) {
+   this.value = value;
+   this.message = "was passed, non-negative integer expected.";
+   this.toString = function() {
+      return this.value + this.message
+   };
+   throw this;
+}
 
 
 
