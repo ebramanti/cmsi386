@@ -1,7 +1,7 @@
 //  Problem #1
 function change(cents) {
     if (cents < 0) {
-        throws "Negative integer argument found.";
+        //throws "Negative integer argument found.";
     }
     //if cents isBoolean: raise ValueError("Input unrounded number of cents (float found)")
     var usCoinDenominations = [25, 10, 5, 1];
@@ -66,17 +66,13 @@ function stutter(array) {
 //  Problem #8
 function wordCount(s) {
     var result = {};
-    var wordArray = s.split(/\s/i);
-    console.log(wordArray + " ### post split array");
-    var check = /^[?'a-zA-Z0-9._\-]*$/;
-
+    var wordArray = s.toLowerCase().replace("-", " ").split(/\s/);
+    var check = /^[?'.!,:;a-zA-Z0-9._\-]*$/;
     for(var i = 0; i < wordArray.length; i++) {
-        console.log(wordArray[i].length);
-        console.log(check.test(wordArray[i]));
         if (check.test(wordArray[i]) && wordArray[i] !== "") {
             var word = wordArray[i];
             word = word.replace(/[?.!,:;]/ig, '');
-            if (result.hasOwnProperty(wordArray[i])) {
+            if (result.hasOwnProperty(word)) {
                 result[word] += 1;
             }
             else {
@@ -84,11 +80,8 @@ function wordCount(s) {
             }
         }
     }
-    console.log(wordArray);
     return result;
 }
-
-//wordCount(" He?llo, wor@ld what's up dawg?")
 
 
 

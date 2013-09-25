@@ -20,10 +20,10 @@ $(function () {
         deepEqual(change(5), [0, 0, 1, 0]);
         deepEqual(change(10), [0, 1, 0, 0]);
         deepEqual(change(25), [1, 0, 0, 0]);
-        throws(function() {change(-10)}, TypeError, "Negative integer argument found.");
-        throws(function() {change(-47)}, TypeError, "Negative integer argument found.");
-        throws(function() {change(11.3)}, TypeError, "Negative integer argument found.");
-        throws(function() {change((13/7))}, TypeError, "Negative integer argument found.");
+        throws(change(-10), TypeError, "Negative integer argument found");
+        throws(change(-47), TypeError, "Negative integer argument found");
+        throws(change(11.3), TypeError, "Negative integer argument found");
+        throws(change((13/7)), TypeError, "Negative integer argument found");
         deepEqual(change(9007199254740992), [360287970189639, 1, 1, 2]);
         // More needed
     });
@@ -67,12 +67,13 @@ $(function () {
     });
 
     test("Word Count Tests", function () {
-        deepEqual(wordCount("I'm here fireman"), {"I'm":1, "here":1, "fireman":1});
+        deepEqual(wordCount("I'm here fireman"), {"i'm":1, "here":1, "fireman":1});
         deepEqual(wordCount("na na na na-na na na NA BATMAN!"), {"na": 8, "batman":1});
         deepEqual(wordCount("On to the next on on to the next on... "), {"on":4, "to":2, "the":2, "next":2});
         deepEqual(wordCount(""), {});
         deepEqual(wordCount("I can'''t do that, I just can''t can't do that."), {"i":2, "can'''t":1, "do":2, "that":2, "just":1, "can''t":1, "can't":1});
         deepEqual(wordCount("Good\nMorning!"), {"good":1, "morning":1});
+        deepEqual(wordCount("If you dog a dog, you'll\nbe DOG-TIRED."), {"if":1, "you":1, "dog":3, "a":1, "you'll":1, "be":1, "tired":1});
 
         //  Add more
     });
