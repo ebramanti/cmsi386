@@ -73,6 +73,7 @@ $(function () {
         deepEqual(wordCount(""), {});
         deepEqual(wordCount("I can'''t do that, I just can''t can't do that."), {"i":2, "can'''t":1, "do":2, "that":2, "just":1, "can''t":1, "can't":1});
         deepEqual(wordCount("Good\nMorning!"), {"good":1, "morning":1});
+        deepEqual(wordCount(), {});
 
         //  Add more
     });
