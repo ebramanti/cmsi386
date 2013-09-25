@@ -1,5 +1,8 @@
+//  Problem #1
 function change(cents) {
-    //if cents < 0: raise ValueError("Not an int > 0.")
+    if (cents < 0) {
+        //throws "Negative integer argument found.";
+    }
     //if cents isBoolean: raise ValueError("Input unrounded number of cents (float found)")
     var usCoinDenominations = [25, 10, 5, 1];
     var results = [];
@@ -13,40 +16,83 @@ function change(cents) {
     return results;
 }
 
+//  Problem #2
 function stripVowels(s) {
     return s.replace(/[aeiou]/ig, '');
 }
 
+//  Problem #3
 function scramble(s) {
-    return -1;
+    return s.split("").sort(function(){return Math.random() - 0.5;}).join("");
 }
 
-function powersOfTwo(max) {
-    return -1;
+//  Problem #4
+function powersOfTwo(max, f) {
+    for (var i = 1; i <= max; i *= 2) {
+        f(i);
+    }
 }
 
-function powers(base, max) {
-    return -1;
+//  Problem #5
+function powers(base, max, f) {
+    for (var i = 1; i <= max; i *= base) {
+        f(i);
+    }
 }
 
-function interleave(array1, array2) {
-    return -1;
+//  Problem #6
+function interleave(a, b) {
+    var result = [];
+    var i = 0;
+    var j = 0;
+    while (result.length < a.length + b.length) {
+        if (i < a.length) {
+            result.push(a[i]);
+            i++;
+        }
+        if (j < b.length) {
+            result.push(b[j]);
+            j++;
+        }
+    }
+    return result;
 }
 
-function stutter(arrayA) {
-    return -1;
+//  Problem #7
+function stutter(array) {
+    return interleave(array, array);
 } 
 
+//  Problem #8
 function wordCount(s) {
-    return -1;
-}
-function scramble(s) { //still testing to see if true, unbiased scramble.
-    result = s.split("");
-    for(var i = 0; i < s.length; i++) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var scrambler = result[i];
-        result[i] = result[j];
-        result[j] = scrambler;
+    var result = {};
+    var wordArray = s.toLowerCase().replace("-", " ").split(/\s/);
+    var check = /^[?'.!,:;a-zA-Z0-9._\-]*$/;
+    for(var i = 0; i < wordArray.length; i++) {
+        if (check.test(wordArray[i]) && wordArray[i] !== "") {
+            var word = wordArray[i];
+            word = word.replace(/[?.!,:;]/ig, '');
+            if (result.hasOwnProperty(word)) {
+                result[word] += 1;
+            }
+            else {
+                result[word] = 1;
+            }
+        }
     }
-    return result.join("");
+    return result;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+// + 1 for Zane & Ed for semicolons
