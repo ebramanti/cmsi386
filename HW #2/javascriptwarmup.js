@@ -55,7 +55,7 @@ function interleave(a, b) {
             j++;
         }
     }
-    return '[' + result + ']'; //check to see if brackets are necessary
+    return result;
 }
 
 //  Problem #7
@@ -65,7 +65,41 @@ function stutter(array) {
 
 //  Problem #8
 function wordCount(s) {
-    return -1;
+    var result = {};
+    var wordArray = s.split(/\s/i);
+    console.log(wordArray + " ### post split array");
+    var check = /^[?'a-zA-Z0-9._\-]*$/;
+
+    for(var i = 0; i < wordArray.length; i++) {
+        console.log(wordArray[i].length);
+        console.log(check.test(wordArray[i]));
+        if (check.test(wordArray[i]) && wordArray[i] !== "") {
+            var word = wordArray[i];
+            word = word.replace(/[?.!,:;]/ig, '');
+            if (result.hasOwnProperty(wordArray[i])) {
+                result[word] += 1;
+            }
+            else {
+                result[word] = 1;
+            }
+        }
+    }
+    console.log(wordArray);
+    return result;
 }
+
+//wordCount(" He?llo, wor@ld what's up dawg?")
+
+
+
+
+
+
+
+
+
+
+
+
 
 // + 1 for Zane & Ed for semicolons
