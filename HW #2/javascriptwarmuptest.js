@@ -1,3 +1,4 @@
+//  Problem 9: javascriptwarmuptest.js
 $(function () {
 
     var anagram = function (s, t) {
@@ -24,7 +25,6 @@ $(function () {
         throws(function() {change(11.3)}, IllegalArgumentException);
         throws(function() {change(13/7)}, IllegalArgumentException);
 /*F*/   deepEqual(change(9007199254740992), [360287970189639, 1, 1, 2]);
-        // More needed
     });
 
     test("Strip Vowels Tests", function () {

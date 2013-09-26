@@ -1,3 +1,7 @@
+//  CMSI 386 HW #2
+//  + 1 for Zane & Ed for semicolons
+//  http://jsfiddle.net/jadengore/5J84t/
+
 //  Problem #1
 function change(cents) {
     if (cents < 0 || cents % 1 !== 0) {
@@ -8,7 +12,7 @@ function change(cents) {
     var remaining = cents;
     for (i = 0; i < usCoinDenominations.length; i++) {
         s = usCoinDenominations[i];
-        partialSolution = [Math.floor(remaining / s), remaining % s];  //ask toal
+        partialSolution = [Math.floor(remaining / s), remaining % s];
         results.push(partialSolution[0]);
         remaining = partialSolution[1];
     }
@@ -87,6 +91,7 @@ function wordCount(s) {
     return result;
 }
 
+//custom IllegalArgumentException() method
 function IllegalArgumentException(value, message) {
    this.value = value;
    this.message = message;
@@ -111,14 +116,3 @@ function collectPowers(base,limit) {
 
     return result;
 }
-
-
-
-
-
-
-
-
-
-
-// + 1 for Zane & Ed for semicolons

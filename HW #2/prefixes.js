@@ -1,3 +1,5 @@
+//	Problem #10
+//	http://jsfiddle.net/jadengore/qfhLh/15/
 window.prefixes = function(word, i) {
     if (i <= word.length) {
         var substring = i === 0 ? "&nbsp;" : word.substring(0, i);
