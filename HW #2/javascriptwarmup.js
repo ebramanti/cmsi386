@@ -1,12 +1,8 @@
 //  Problem #1
 function change(cents) {
-    if (cents < 0) {
+    if (cents < 0 || cents % 1 !== 0) {
         throw new IllegalArgumentException(cents);
     }
-    else if (cents % 1 !== 0) {
-        throw new IllegalArgumentException(cents);
-    }
-    //if cents isBoolean: raise ValueError("Input unrounded number of cents (float found)")
     var usCoinDenominations = [25, 10, 5, 1];
     var results = [];
     var remaining = cents;
@@ -88,13 +84,28 @@ function wordCount(s) {
 
 function IllegalArgumentException(value) {
    this.value = value;
-   this.message = "was passed, non-negative integer expected.";
+   this.message = " was passed, non-negative integer expected.";
    this.toString = function() {
       return this.value + this.message
    };
    throw this;
 }
 
+//use this to test powersOfTwo
+function collectPowersOfTwo(limit) {
+    var result = [];
+    powersOfTwo(limit, function(value) {result.push(value)});
+
+    return result;
+}
+
+//use this to test powers
+function collectPowers(base,limit) {
+    var result = [];
+    powers(base,limit, function(value) {result.push(value)});
+
+    return result;
+}
 
 
 

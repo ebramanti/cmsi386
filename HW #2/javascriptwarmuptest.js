@@ -43,14 +43,18 @@ $(function () {
     });
 
     test("Scramble Tests", function () {
-        var data = ["", "a", "rat", "zzz", "^*&^*&^▱ÄÈËɡɳɷ"]
+        var data = [    "", "a", "rat", "zzz", "^*&^*&^▱ÄÈËɡɳɷ","a", "rat", 
+                        "BSOD", "BDFL", "Python testing", " a b c ", 
+                        "Hannah Montana", "142452729"
+                    ]
         data.forEach(function (s) {
             ok(anagram(s, scramble(s)));
         });
     });
 
     test("Powers of Two Tests", function () {
-        expect(0);          //Means tests are needed but will not crash tester.
+        //deepEqual(powersOfTwo)
+        expect(0);
     });
 
     test("Powers of n Tests", function () {
