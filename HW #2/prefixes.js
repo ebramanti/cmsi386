@@ -1,5 +1,9 @@
 //	Problem #10
 //	http://jsfiddle.net/jadengore/qfhLh/15/
+
+/*	Used window.prefixes to get prefixes() noticed by HTML
+ *  in jsfiddle.
+ */
 window.prefixes = function(word, i) {
     if (i <= word.length) {
         var substring = i === 0 ? "&nbsp;" : word.substring(0, i);
@@ -9,6 +13,3 @@ window.prefixes = function(word, i) {
         }, 1000);
     }
 }
-/*	Had to use window.prefixes to get prefixes noticed by the html
-	part of jsfiddle.
-*/
