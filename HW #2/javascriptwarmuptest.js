@@ -53,8 +53,23 @@ $(function () {
     });
 
     test("Powers of Two Tests", function () {
-        //deepEqual(powersOfTwo)
-        expect(0);
+        deepEqual(collectPowersOfTwo(70), [1,2,4,8,16,32,64]);
+        deepEqual(collectPowersOfTwo(1)),(1,))
+        deepEqual(collectPowersOfTwo(7)),(1,2,4))
+        deepEqual(collectPowersOfTwo(8)),(1,2,4,8))
+        deepEqual(collectPowersOfTwo(15)),(1,2,4,8))
+        deepEqual(collectPowersOfTwo(16)),(1,2,4,8,16))
+        deepEqual(collectPowersOfTwo(17)),(1,2,4,8,16))
+        deepEqual(collectPowersOfTwo(31)),(1,2,4,8,16))
+        deepEqual(collectPowersOfTwo(32)),(1,2,4,8,16,32))
+        deepEqual(collectPowersOfTwo(33)),(1,2,4,8,16,32))
+        deepEqual(collectPowersOfTwo(70)),(1,2,4,8,16,32,64))
+        deepEqual(collectPowersOfTwo(130)),(1,2,4,8,16,32,64,128))
+        deepEqual(collectPowersOfTwo(255)),(1,2,4,8,16,32,64,128))
+        deepEqual(collectPowersOfTwo(256)),(1,2,4,8,16,32,64,128,256))
+        deepEqual(collectPowersOfTwo(65536)),(1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536))
+        deepEqual(collectPowersOfTwo(-22)),())
+        deepEqual(collectPowersOfTwo(0)),())
     });
 
     test("Powers of n Tests", function () {
