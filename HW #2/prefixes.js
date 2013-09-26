@@ -1,11 +1,15 @@
-function prefixes(word) {
-        
-    var next = word.substring(0, j);
-        $("body").append("<div>" + next + "</div>");
-        setTimeout(function () {
+window.prefixes = function (word) {
+    var j = 0;
+    function next() {
+        if (j <= word.length) {
+            $("body").append("<div>" + word.substring(0, j) + "</div>");
+            setTimeout(function () {next();}, 1000);
             j++;
-            prefixes();
-        }, 1000);
+        }
+    }  
+    next();
 }
+/*	Had to use window.prefixes to get prefixes noticed by the html
+	part of jsfiddle.
+*/
 
-prefixes("Hello, world");
