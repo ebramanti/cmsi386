@@ -1,11 +1,9 @@
-function prefixes(word) {
-        
-    var next = word.substring(0, j);
-        $("body").append("<div>" + next + "</div>");
+function prefixes(word, i) {
+    if (i <= word.length) {
+        var substring = i === 0 ? "&nbsp;" : word.substring(0, i);
+        $("body").append('<div>' + substring + '</div>');
         setTimeout(function () {
-            j++;
-            prefixes();
+            prefixes(word, i + 1);
         }, 1000);
+    }
 }
-
-prefixes("Hello, world");
