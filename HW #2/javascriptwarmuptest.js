@@ -75,6 +75,8 @@ $(function () {
         deepEqual(collectPowers(0,0), []);
         deepEqual(collectPowers(27,0), []);
         deepEqual(collectPowers(14,-1), []);
+        deepEqual(collectPowers(-3,30), [1,-3,9,-27], "Negative base");
+        deepEqual(collectPowers(-3,81), [1,-3,9,-27,81,-243], "Negative magnitude larger than max magnitude");
         deepEqual(collectPowers(3,30), [1,3,9,27]);
         deepEqual(collectPowers(3,27), [1,3,9,27]);
         deepEqual(collectPowers(3,26), [1,3,9]);
@@ -91,11 +93,29 @@ $(function () {
     });
 
     test("Interleave Tests", function () {
-        expect(0);
+        deepEqual(interleave([1,2],[3,4]), [1,3,2,4]);
+        deepEqual(interleave([1,2],[3,4,5]), [1,3,2,4,5]);
+        deepEqual(interleave([1,2],[3,4,5,6]), [1,3,2,4,5,6]);
+        deepEqual(interleave(['a','b','c'],[3,4]), ['a',3,'b',4,'c']);
+        deepEqual(interleave([1],[3]), [1,3]);
+        deepEqual(interleave([1,2],[]), [1,2]);
+        deepEqual(interleave(['Aqua','Start up'],[1,2]), ['Aqua',1,'Start up',2]);
+        deepEqual(interleave([1,2],['Aqua','Start up']), [1,'Aqua',2,'Start up']);
+        deepEqual(interleave([1],[2,3,4,5,6,7,8,9]), [1,2,3,4,5,6,7,8,9]);
+        deepEqual(interleave([],[]), []);
     });
 
     test("Stutter Tests", function () {
-        expect(0);
+        deepEqual(stutter([]), []);
+        deepEqual(stutter(['a','b','c']), ['a','a','b','b','c','c']);
+        deepEqual(stutter(['a','a','a']), ['a','a','a','a','a','a']);
+        deepEqual(stutter([1,2,3]), [1,1,2,2,3,3]);
+        deepEqual(stutter([[1],[2,3]]), [[1],[1],[2,3],[2,3]], "Array[]'s passed");
+        deepEqual(stutter([[1,2,3]]), [[1,2,3],[1,2,3]], "Array[]'s passed");
+        deepEqual(stutter([[1,2,[3]]]), [[1,2,[3]],[1,2,[3]]], "Array[]'s passed");
+        deepEqual(stutter(['Repeat that']), ['Repeat that', 'Repeat that']);
+        var baconObject = {isTasty: true};
+        deepEqual(stutter([baconObject]), [baconObject, baconObject], "Objects passed");
     });
 
     test("Word Count Tests", function () {
