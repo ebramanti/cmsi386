@@ -38,8 +38,7 @@ $(function () {
         deepEqual(stripVowels("Sweet home Alabama"), "Swt hm lbm");
         deepEqual(stripVowels("Once upon a time there was a big huge giant Moon up there."), "nc pn  tm thr ws  bg hg gnt Mn p thr.");
         deepEqual(stripVowels("Toy Story 2"), "Ty Stry 2");
-        deepEqual(stripVowels("3.14159"), "3.14159");  
-        // More needed
+        deepEqual(stripVowels("3.14159"), "3.14159");
     });
 
     test("Scramble Tests", function () {
@@ -68,11 +67,13 @@ $(function () {
         deepEqual(collectPowersOfTwo(255), [1,2,4,8,16,32,64,128]);
         deepEqual(collectPowersOfTwo(256), [1,2,4,8,16,32,64,128,256]);
         deepEqual(collectPowersOfTwo(65536), [1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536]);
-        deepEqual(collectPowersOfTwo(-22),[]);
+        deepEqual(collectPowersOfTwo(-22), []);
     });
 
     test("Powers of n Tests", function () {
         deepEqual(collectPowers(0,0), []);
+        deepEqual(collectPowers(1,6), [1]);
+        deepEqual(collectPowers(1,20), [1]);
         deepEqual(collectPowers(27,0), []);
         deepEqual(collectPowers(14,-1), []);
         deepEqual(collectPowers(-3,30), [1,-3,9,-27], "Negative base");
@@ -123,10 +124,10 @@ $(function () {
         deepEqual(wordCount("na na na na-na na na NA BATMAN!"), {"na": 8, "batman":1});
         deepEqual(wordCount("On to the next on on to the next on... "), {"on":4, "to":2, "the":2, "next":2});
         deepEqual(wordCount(""), {});
+        deepEqual(wordCount("Boss."), {"boss": 1});
         deepEqual(wordCount("I can'''t do that, I just can''t can't do that."), {"i":2, "can'''t":1, "do":2, "that":2, "just":1, "can''t":1, "can't":1});
         deepEqual(wordCount("Good\nMorning!"), {"good":1, "morning":1});
         deepEqual(wordCount("If you dog a dog, you'll\nbe DOG-TIRED."), {"if":1, "you":1, "dog":3, "a":1, "you'll":1, "be":1, "tired":1});
-        //  Add more
     });
 });
 

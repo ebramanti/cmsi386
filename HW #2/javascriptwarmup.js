@@ -1,7 +1,7 @@
 //  Problem #1
 function change(cents) {
     if (cents < 0 || cents % 1 !== 0) {
-        throw new IllegalArgumentException(cents);
+        throw new IllegalArgumentException(cents, " was passed, non-negative integer expected.");
     }
     var usCoinDenominations = [25, 10, 5, 1];
     var results = [];
@@ -34,8 +34,13 @@ function powersOfTwo(max, f) {
 
 //  Problem #5
 function powers(base, max, f) {
-    for (var i = 1; i <= max; i *= base) {
-        f(i);
+    if (base === 1) {
+        f(1);
+    }
+    else {
+        for (var i = 1; i <= max; i *= base) {
+            f(i);
+        }
     }
 }
 
@@ -82,9 +87,9 @@ function wordCount(s) {
     return result;
 }
 
-function IllegalArgumentException(value) {
+function IllegalArgumentException(value, message) {
    this.value = value;
-   this.message = " was passed, non-negative integer expected.";
+   this.message = message;
    this.toString = function() {
       return this.value + this.message
    };
