@@ -53,27 +53,41 @@ $(function () {
     });
 
     test("Powers of Two Tests", function () {
+        deepEqual(collectPowersOfTwo(0), []);
+        deepEqual(collectPowersOfTwo(1), [1,]);
+        deepEqual(collectPowersOfTwo(7), [1,2,4]);
+        deepEqual(collectPowersOfTwo(8), [1,2,4,8]);
+        deepEqual(collectPowersOfTwo(15), [1,2,4,8]);
+        deepEqual(collectPowersOfTwo(16), [1,2,4,8,16]);
+        deepEqual(collectPowersOfTwo(17), [1,2,4,8,16]);
+        deepEqual(collectPowersOfTwo(31), [1,2,4,8,16]);
+        deepEqual(collectPowersOfTwo(32), [1,2,4,8,16,32]);
+        deepEqual(collectPowersOfTwo(33), [1,2,4,8,16,32]);
         deepEqual(collectPowersOfTwo(70), [1,2,4,8,16,32,64]);
-        deepEqual(collectPowersOfTwo(1)),(1,))
-        deepEqual(collectPowersOfTwo(7)),(1,2,4))
-        deepEqual(collectPowersOfTwo(8)),(1,2,4,8))
-        deepEqual(collectPowersOfTwo(15)),(1,2,4,8))
-        deepEqual(collectPowersOfTwo(16)),(1,2,4,8,16))
-        deepEqual(collectPowersOfTwo(17)),(1,2,4,8,16))
-        deepEqual(collectPowersOfTwo(31)),(1,2,4,8,16))
-        deepEqual(collectPowersOfTwo(32)),(1,2,4,8,16,32))
-        deepEqual(collectPowersOfTwo(33)),(1,2,4,8,16,32))
-        deepEqual(collectPowersOfTwo(70)),(1,2,4,8,16,32,64))
-        deepEqual(collectPowersOfTwo(130)),(1,2,4,8,16,32,64,128))
-        deepEqual(collectPowersOfTwo(255)),(1,2,4,8,16,32,64,128))
-        deepEqual(collectPowersOfTwo(256)),(1,2,4,8,16,32,64,128,256))
-        deepEqual(collectPowersOfTwo(65536)),(1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536))
-        deepEqual(collectPowersOfTwo(-22)),())
-        deepEqual(collectPowersOfTwo(0)),())
+        deepEqual(collectPowersOfTwo(130), [1,2,4,8,16,32,64,128]);
+        deepEqual(collectPowersOfTwo(255), [1,2,4,8,16,32,64,128]);
+        deepEqual(collectPowersOfTwo(256), [1,2,4,8,16,32,64,128,256]);
+        deepEqual(collectPowersOfTwo(65536), [1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536]);
+        deepEqual(collectPowersOfTwo(-22),[]);
     });
 
     test("Powers of n Tests", function () {
-        expect(0);         
+        deepEqual(collectPowers(0,0), []);
+        deepEqual(collectPowers(27,0), []);
+        deepEqual(collectPowers(14,-1), []);
+        deepEqual(collectPowers(3,30), [1,3,9,27]);
+        deepEqual(collectPowers(3,27), [1,3,9,27]);
+        deepEqual(collectPowers(3,26), [1,3,9]);
+        deepEqual(collectPowers(4,64), [1,4,16,64]);
+        deepEqual(collectPowers(10,999), [1,10,100]);
+        deepEqual(collectPowers(10,1000), [1,10,100,1000]);
+        deepEqual(collectPowers(5,125), [1,5,25,125]);
+        deepEqual(collectPowers(5,126), [1,5,25,125]);
+        deepEqual(collectPowers(2,130), [1,2,4,8,16,32,64,128]);
+        deepEqual(collectPowers(3,1), [1,]);
+        deepEqual(collectPowers(3,3), [1,3]);
+        deepEqual(collectPowers(3,10), [1,3,9]);
+        deepEqual(collectPowers(2,65536), [1,2,4,8,16,32,64,128,256,512,1024,2048,4096,8192,16384,32768,65536]);         
     });
 
     test("Interleave Tests", function () {
