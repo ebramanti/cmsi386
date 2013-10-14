@@ -60,11 +60,11 @@ func powers(upTo, base int) (result int) {
     //
 }
 
-func interleave(a, b *List) (c List) {
+func interleave(a, b []string) (c []string) {
     //
 }
 
-func stutter(a, b *List) (c List) {
+func stutter(a, b []string) (c []string) {
     return interleave(a, b)
 }
 
