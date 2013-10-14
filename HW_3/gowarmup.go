@@ -65,7 +65,7 @@ func interleave(a, b *List) (c List) {
 }
 
 func stutter(a, b *List) (c List) {
-    //
+    return interleave(a, b)
 }
 
 
