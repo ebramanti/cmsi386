@@ -52,9 +52,9 @@ func scramble(s string) (t string) {
     return strings.Join(a,"")
 }
 
-func powersOfTwo(upTo int)  {
-    
-}
+func powersOfTwo(upTo int, func(int) string) {
+    //http://play.golang.org/p/IyCHPck7ri
+} 
 
 func powers(upTo, base int) (result int) {
     //
