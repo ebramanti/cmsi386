@@ -11,7 +11,7 @@ import (
 
 func main() {
     //mini test here
-    change(20)
+    fmt.Println(change(20))
     //..
 }
 
@@ -38,15 +38,22 @@ func change(amount int) (change []int) {
 }
 
 func removeVowels(s string) (t string) {
-    //
+    return regexp.MustCompile("[aeiouAEIOU]").ReplaceAllString(s, "")
 }
 
 func scramble(s string) (t string) {
-    //
+    a := strings.Split(s, "")
+    for i := len(a) - 1; i > 0; i-- {
+        j := int(math.Floor(rand.Float64() * float64(i)))
+        save := a[i]
+        a[i] = a[j]
+        a[j] = save
+    }
+    return strings.Join(a,"")
 }
 
 func powersOfTwo(upTo int)  {
-    //
+    
 }
 
 func powers(upTo, base int) (result int) {
