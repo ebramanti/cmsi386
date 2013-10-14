@@ -13,3 +13,6 @@ func main() {
 	//..
 }
 
+func change(amount int) (change int) {
+	
+}
