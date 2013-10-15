@@ -73,9 +73,23 @@ func powers(base int, upTo int, f func(int)) {
 }
 
 func interleave(a, b []string) (c []string) {
-	//
+	var result []string
+	i := 0
+	j := 0
+
+	for len(result) < (len(a) + len(b)) {
+		if i < len(a) {
+			result = append(result, a[i])
+			i++
+		}
+		if j < len(b) {
+			result = append(result, b[j])
+			j++
+		}
+	}
+	return result
 }
 
-func stutter(a, b []string) (c []string) {
-	return interleave(a, b)
+func stutter(a []string) (c []string) {
+	return interleave(a, a)
 }
