@@ -1,5 +1,5 @@
 //	Problem #10
-//	http://jsfiddle.net/jadengore/qfhLh/15/
+//	http://jsfiddle.net/jadengore/qfhLh/25/
 
 /*	Used window.prefixes to get prefixes() noticed by HTML
  *  in jsfiddle.
