@@ -213,20 +213,53 @@ func TestPowers(t *testing.T) {
 }
 
 func TestInterleave(t *testing.T) {
-        {   []string{1,2},  {3,4}, {1,3,2,4}};
-        {   {1,2},  {3,4,5}, {}1,3,2,4,5}};
-        {   {1,2},  {3,4,5,6}, [1,3,2,4,5,6}};
-        {   {'a','b','c'}, {3,4}, {'a',3,'b',4,'c'}};
-        {   {1},    {3}), {1,3}};
-        {   {1,2},{}), {1,2}};
-        {   {'Aqua','Start up'},{1,2}}, {'Aqua',1,'Start up',2}};
-        {   {1,2},{'Aqua','Start up'}}, {1,'Aqua',2,'Start up'}};
-        {   {1},{2,3,4,5,6,7,8,9}}, {1,2,3,4,5,6,7,8,9}};
-        {   {}, {}, {}};
+	a := []struct {
+		x, y, z []string
+	}{
+		{[]string{"1", "2"}, []string{"3", "4"}, []string{"1", "3", "2", "4"}},
+		{[]string{"1", "2"}, []string{"3", "4", "5"}, []string{"1", "3", "2", "4", "5"}},
+		{[]string{"1", "2"}, []string{"3", "4", "5", "6"}, []string{"1", "3", "2", "4", "5", "6"}},
+		{[]string{"a", "b", "c"}, []string{"3", "4"}, []string{"a", "3", "b", "4", "c"}},
+		{[]string{"1"}, []string{"3"}, []string{"1", "3"}},
+		{[]string{"1", "2"}, []string{}, []string{"1", "2"}},
+		{[]string{"Aqua", "Start up"}, []string{"1", "2"}, []string{"Aqua", "1", "Start up", "2"}},
+		{[]string{"1", "2"}, []string{"Aqua", "Start up"}, []string{"1", "Aqua", "2", "Start up"}},
+		{[]string{"1"}, []string{"2", "3", "4", "5", "6", "7", "8", "9"}, []string{"1", "2", "3", "4", "5", "6", "7", "8", "9"}},
+		{[]string{}, []string{}, []string{}},
+		//{[]string{"1"}, []string{"3"}, []string{"1", "2"}}, //failure test
+	}
+	for i, sl := range a {
+		gira := Interleave(sl.x, sl.y)
+		rhin := sl.z
+		for byteIndex, codePoint := range gira {
+			if rhin[byteIndex] != codePoint {
+				t.Errorf("Bad interleave, out-of-sequence value in test: %d", i)
+			}
+		}
+
+	}
 }
 
 func TestStutter(t *testing.T) {
-	t.Errorf("TestChange not implemented")
+	a := []struct {
+		a, b []string
+	}{
+		{[]string{}, []string{}},
+		{[]string{"a", "b", "c"}, []string{"a", "a", "b", "b", "c", "c"}},
+		{[]string{"a", "a", "a"}, []string{"a", "a", "a", "a", "a", "a"}},
+		{[]string{"1", "2", "3"}, []string{"1", "1", "2", "2", "3", "3"}},
+		{[]string{""}, []string{"", ""}},
+		{[]string{"Repeat that"}, []string{"Repeat that", "Repeat that"}},
+		{[]string{"777", "qwert"}, []string{"777", "777", "qwert", "qwert"}},
+		//{[]string{"777", "qwert"}, []string{"777", "777", "qwert", "+++++"}}, //failure test
+	}
+	for i, sl := range a {
+		gira := Stutter(sl.a)
+		rhin := sl.b
+		for byteIndex, codePoint := range gira {
+			if rhin[byteIndex] != codePoint {
+				t.Errorf("Bad interleave, out-of-sequence value in test: %d", i)
+			}
+		}
+	}
 }
-
-//space
