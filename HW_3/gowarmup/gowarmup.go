@@ -1,3 +1,10 @@
+/*
+ *	CMSI 386 HW #3
+ *	Edward Bramanti and Zane Kansil
+ *
+ *	Problem #1
+ */
+
 package gowarmup
 
 import (
