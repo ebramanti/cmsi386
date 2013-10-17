@@ -63,7 +63,7 @@ func TestRemoveVowels(t *testing.T) {
 		{"Once upon a time there was a big huge giant Moon up there.", "nc pn  tm thr ws  bg hg gnt Mn p thr."},
 		{"Toy Story 2", "Ty Stry 2"},
 		{"3.14159", "3.14159"},
-		{"Hello", "Hello"}, //ensuring failure possible
+		//{"Hello", "Hello"}, // failure test
 	}
 
 	for i, sl := range a {
@@ -138,8 +138,8 @@ func TestPowersOfTwo(t *testing.T) {
 		{65536, []int{1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536}},
 		{-22, []int{}},
 		//{8, []int{1, 2, 4}},            // Really, really, really blows up for these.
-		//{8, []int{1, 2, 4, 7}},         // used Fatalf
-		//{8, []int{1, 2, 4, 8, 10}},
+		//{8, []int{1, 2, 4, 7}},         // failure test
+		//{8, []int{1, 2, 4, 8, 10}},     // failure test
 	}
 
 	for i, sl := range a {
@@ -188,8 +188,8 @@ func TestPowers(t *testing.T) {
 		{3, 3, []int{1, 3}},
 		{3, 10, []int{1, 3, 9}},
 		{2, 65536, []int{1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536}},
-		//{3, 10, []int{1, 3, 8}},            //failure tests
-		//{3, 10, []int{1, 3, 9, 15}},
+		//{3, 10, []int{1, 3, 8}},            //failure test
+		//{3, 10, []int{1, 3, 9, 15}},		  //failure test
 	}
 	for i, sl := range a {
 		loud := func(base, upTo int) []int {
@@ -226,7 +226,7 @@ func TestInterleave(t *testing.T) {
 		{[]string{"1", "2"}, []string{"Aqua", "Start up"}, []string{"1", "Aqua", "2", "Start up"}},
 		{[]string{"1"}, []string{"2", "3", "4", "5", "6", "7", "8", "9"}, []string{"1", "2", "3", "4", "5", "6", "7", "8", "9"}},
 		{[]string{}, []string{}, []string{}},
-		{[]string{"1"}, []string{"3"}, []string{"1", "2"}}, //failure test
+		//{[]string{"1"}, []string{"3"}, []string{"1", "2"}}, //failure test
 	}
 	for i, sl := range a {
 		gira := Interleave(sl.x, sl.y)
