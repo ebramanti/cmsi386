@@ -8,12 +8,24 @@ import (
 	"strings"
 )
 
+/*
+ *	A helper method for Change() that performs a divmod operation.
+ */
 func Divmod(x, y int) (quotient, remainder int) {
 	quotient = x / y
 	remainder = x % y
 	return
 }
 
+/*
+ * 	A helper method for PowersOfTwo() and Powers() that prints
+ * 	results up to maximum value.
+ */
+func Print(i int) {
+	fmt.Println(i)
+}
+
+//	Problem a
 func Change(amount int) (change []int) {
 	changeLeft := amount
 	if amount < 0 || amount%1 != 0 {
@@ -31,10 +43,12 @@ func Change(amount int) (change []int) {
 
 }
 
+//	Problem b
 func RemoveVowels(s string) (t string) {
 	return regexp.MustCompile("[aeiouAEIOU]").ReplaceAllString(s, "")
 }
 
+//	Problem c
 func Scramble(s string) (t string) {
 	a := strings.Split(s, "")
 	for i := len(a) - 1; i > 0; i-- {
@@ -46,16 +60,14 @@ func Scramble(s string) (t string) {
 	return strings.Join(a, "")
 }
 
-func Print(i int) {
-	fmt.Println(i)
-}
-
+//	Problem d
 func PowersOfTwo(upTo int, f func(int)) {
 	for i := 1; i <= upTo; i *= 2 {
 		f(i)
 	}
 }
 
+// 	Problem e
 func Powers(base int, upTo int, f func(int)) {
 	if base == 1 {
 		f(1)
@@ -66,6 +78,7 @@ func Powers(base int, upTo int, f func(int)) {
 	}
 }
 
+//	Problem f
 func Interleave(a, b []string) (c []string) {
 	var result []string
 	i := 0
@@ -84,6 +97,7 @@ func Interleave(a, b []string) (c []string) {
 	return result
 }
 
+//	Problem g
 func Stutter(a []string) (c []string) {
 	return interleave(a, a)
 }
