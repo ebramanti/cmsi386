@@ -33,21 +33,18 @@ func Print(i int) {
 }
 
 //	Problem a
-func Change(amount int) (change []int) {
+func Change(amount int) (quarters, nickels, dimes, pennies int) {
 	changeLeft := amount
 	if amount < 0 || amount%1 != 0 {
 		fmt.Println("Non-negative integer expected.")
 		panic(amount)
 	}
-	quarters, changeLeft := Divmod(changeLeft, 25)
-	dimes, changeLeft := Divmod(changeLeft, 10)
-	nickels, changeLeft := Divmod(changeLeft, 5)
-	pennies := changeLeft
+	quarters, changeLeft = Divmod(changeLeft, 25)
+	dimes, changeLeft = Divmod(changeLeft, 10)
+	nickels, changeLeft = Divmod(changeLeft, 5)
+	pennies = changeLeft
 
-	result := []int{quarters, nickels, dimes, pennies}
-
-	return result
-
+	return
 }
 
 //	Problem b

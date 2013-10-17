@@ -1,7 +1,6 @@
 package gowarmup
 
 import (
-	"errors"
 	"testing"
 )
 
@@ -39,30 +38,30 @@ func TestDivmod(t *testing.T) {
 
 func TestChange(t *testing.T) {
 	a := []struct {
-		input          int
-		supposedResult []int
+		input, r0, r1, r2, r3 int
 	}{
-		{0, []int{0, 0, 0, 0}},
-		{1, []int{0, 0, 0, 1}},
-		{5, []int{0, 0, 1, 0}},
-		{8, []int{0, 1, 0, 3}},
-		{10, []int{0, 1, 0, 0}},
-		{25, []int{1, 0, 0, 0}},
-		{97, []int{3, 2, 0, 2}},
-		{100, []int{4, 0, 0, 0}},
-		{1000, []int{40, 0, 0, 0}},
-		{41, []int{1, 1, 1, 1}},
+		{0, 0, 0, 0, 0},
+		{1, 0, 0, 0, 1},
+		{5, 0, 0, 1, 0},
+		{8, 0, 1, 0, 3},
+		{10, 0, 1, 0, 0},
+		{25, 1, 0, 0, 0},
+		{97, 3, 2, 0, 2},
+		{100, 4, 0, 0, 0},
+		{1000, 40, 0, 0, 0},
+		{41, 1, 1, 1, 1},
 	}
 
-	for _, sl := range a {
-		if !sliceCompare(Change(sl.input), sl.supposedResult) {
-			t.Errorf("Expected %v for Change(%d)", sl.supposedResult, sl.input)
+	for i, sl := range a {
+		aa, bb, cc, dd := Change(sl.input)
+		if aa != sl.r0 || bb != sl.r1 || cc != sl.r2 || dd != sl.r3 {
+			t.Errorf("Bad change given for test %d: %v", i, sl)
 		}
 	}
 }
 
 func TestRemoveVowels(t *testing.T) {
-	a = []struct {
+	a := []struct {
 		input, output string
 	}{
 		{"Hello, world", "Hll, wrld"},
@@ -78,8 +77,10 @@ func TestRemoveVowels(t *testing.T) {
 		{"3.14159", "3.14159"},
 	}
 
-	for _, sl := range a {
-
+	for i, sl := range a {
+		if sl.input != sl.output {
+			t.Errorf("Bad vowel detection for test %d", i)
+		}
 	}
 }
 
@@ -101,16 +102,6 @@ func TestInterleave(t *testing.T) {
 
 func TestStutter(t *testing.T) {
 	t.Errorf("TestChange not implemented")
-}
-
-func sliceCompare(x, y []int) (bool, error) {
-	if len(x) != len(y) {
-		c := [len(x)]int{x}
-		d := [len(y)]int{y}
-	} else {
-		return false, errors.New("Cannot compare slices of variant length.")
-	}
-
 }
 
 //space
