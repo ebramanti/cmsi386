@@ -63,7 +63,7 @@ func TestRemoveVowels(t *testing.T) {
 		{"Once upon a time there was a big huge giant Moon up there.", "nc pn  tm thr ws  bg hg gnt Mn p thr."},
 		{"Toy Story 2", "Ty Stry 2"},
 		{"3.14159", "3.14159"},
-		//{"Hello", "Hello"}, //ensuring failure possible
+		{"Hello", "Hello"}, //ensuring failure possible
 	}
 
 	for i, sl := range a {
@@ -77,8 +77,8 @@ func sameCharSet(s, t string) bool {
 	if len(s) != len(t) {
 		return false
 	} else {
-		for i := range s {
-			if !strings.Contains(t, string(s[i])) {
+		for _, codePoint := range t {
+			if !strings.Contains(s, string(codePoint)) {
 				return false
 			}
 		}
@@ -226,7 +226,7 @@ func TestInterleave(t *testing.T) {
 		{[]string{"1", "2"}, []string{"Aqua", "Start up"}, []string{"1", "Aqua", "2", "Start up"}},
 		{[]string{"1"}, []string{"2", "3", "4", "5", "6", "7", "8", "9"}, []string{"1", "2", "3", "4", "5", "6", "7", "8", "9"}},
 		{[]string{}, []string{}, []string{}},
-		//{[]string{"1"}, []string{"3"}, []string{"1", "2"}}, //failure test
+		{[]string{"1"}, []string{"3"}, []string{"1", "2"}}, //failure test
 	}
 	for i, sl := range a {
 		gira := Interleave(sl.x, sl.y)
