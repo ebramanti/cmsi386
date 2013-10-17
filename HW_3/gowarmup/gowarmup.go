@@ -8,13 +8,13 @@ import (
 	"strings"
 )
 
-func divmod(x, y int) (quotient, remainder int) {
+func Divmod(x, y int) (quotient, remainder int) {
 	quotient = x / y
 	remainder = x % y
 	return
 }
 
-func change(amount int) (change []int) {
+func Change(amount int) (change []int) {
 	changeLeft := amount
 	if amount < 0 || amount%1 != 0 {
 		fmt.Println("Non-negative integer expected.")
@@ -31,11 +31,11 @@ func change(amount int) (change []int) {
 
 }
 
-func removeVowels(s string) (t string) {
+func RemoveVowels(s string) (t string) {
 	return regexp.MustCompile("[aeiouAEIOU]").ReplaceAllString(s, "")
 }
 
-func scramble(s string) (t string) {
+func Scramble(s string) (t string) {
 	a := strings.Split(s, "")
 	for i := len(a) - 1; i > 0; i-- {
 		j := int(math.Floor(rand.Float64() * float64(i)))
@@ -46,17 +46,17 @@ func scramble(s string) (t string) {
 	return strings.Join(a, "")
 }
 
-func print(i int) {
+func Print(i int) {
 	fmt.Println(i)
 }
 
-func powersOfTwo(upTo int, f func(int)) {
+func PowersOfTwo(upTo int, f func(int)) {
 	for i := 1; i <= upTo; i *= 2 {
 		f(i)
 	}
 }
 
-func powers(base int, upTo int, f func(int)) {
+func Powers(base int, upTo int, f func(int)) {
 	if base == 1 {
 		f(1)
 	} else {
@@ -66,7 +66,7 @@ func powers(base int, upTo int, f func(int)) {
 	}
 }
 
-func interleave(a, b []string) (c []string) {
+func Interleave(a, b []string) (c []string) {
 	var result []string
 	i := 0
 	j := 0
@@ -84,6 +84,6 @@ func interleave(a, b []string) (c []string) {
 	return result
 }
 
-func stutter(a []string) (c []string) {
+func Stutter(a []string) (c []string) {
 	return interleave(a, a)
 }
