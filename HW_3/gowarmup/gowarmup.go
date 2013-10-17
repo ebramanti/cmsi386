@@ -18,7 +18,7 @@ import (
 /*
  *	A helper method for Change() that performs a Divmod operation.
  */
-func Divmod(x, y int) (quotient, remainder int) {
+func DivMod(x, y int) (quotient, remainder int) {
 	quotient = x / y
 	remainder = x % y
 	return
@@ -39,10 +39,21 @@ func Change(amount int) (quarters, nickels, dimes, pennies int) {
 		fmt.Println("Non-negative integer expected.")
 		panic(amount)
 	}
+<<<<<<< HEAD
 	quarters, changeLeft = Divmod(changeLeft, 25)
 	dimes, changeLeft = Divmod(changeLeft, 10)
 	nickels, changeLeft = Divmod(changeLeft, 5)
 	pennies = changeLeft
+=======
+	quarters, changeLeft := DivMod(changeLeft, 25)
+	dimes, changeLeft := DivMod(changeLeft, 10)
+	nickels, changeLeft := DivMod(changeLeft, 5)
+	pennies := changeLeft
+
+	result := []int{quarters, nickels, dimes, pennies}
+
+	return result
+>>>>>>> 129030e5da3d986b08e17aa355e3b1625d4d9fbb
 
 	return
 }
