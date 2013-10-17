@@ -116,10 +116,6 @@ func TestScramble(t *testing.T) {
 
 }
 
-func echo(i int) {
-	return i
-}
-
 func TestPowersOfTwo(t *testing.T) {
 	a := []struct {
 		x int
@@ -141,19 +137,92 @@ func TestPowersOfTwo(t *testing.T) {
 		{256, []int{1, 2, 4, 8, 16, 32, 64, 128, 256}},
 		{65536, []int{1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536}},
 		{-22, []int{}},
+		//{8, []int{1, 2, 4}},            // Really, really, really blows up for these.
+		//{8, []int{1, 2, 4, 7}},         // used Fatalf
+		//{8, []int{1, 2, 4, 8, 10}},
 	}
 
 	for i, sl := range a {
-		PowersOfTwo(sl.x, echo(i))
+		loud := func(upTo int) []int {
+			bat := []int{}
+			toSlice := func(i int) {
+				bat = append(bat, i)
+			}
+			PowersOfTwo(upTo, toSlice)
+			return bat
+		}
+		tiger := loud(sl.x)
+		if len(tiger) != len(sl.y) {
+			t.Fatalf("Bad test result, compared strings of different length at test: %d", i)
+		}
+		for o := 0; o < len(tiger); o++ {
+			if tiger[o] != sl.y[o] {
+				t.Errorf("Bad power outputted during test %d... %d != %d", i, tiger[o], sl.y[o])
+			}
+		}
 	}
 }
 
 func TestPowers(t *testing.T) {
-	t.Errorf("TestChange not implemented")
+	a := []struct {
+		x, y int
+		z    []int
+	}{
+		{0, 0, []int{}},
+		{1, 6, []int{1}},
+		{1, 20, []int{1}},
+		{27, 0, []int{}},
+		{14, -1, []int{}},
+		{-3, 30, []int{1, -3, 9, -27}},
+		{-3, 81, []int{1, -3, 9, -27, 81, -243}},
+		{3, 30, []int{1, 3, 9, 27}},
+		{3, 27, []int{1, 3, 9, 27}},
+		{3, 26, []int{1, 3, 9}},
+		{4, 64, []int{1, 4, 16, 64}},
+		{10, 999, []int{1, 10, 100}},
+		{10, 1000, []int{1, 10, 100, 1000}},
+		{5, 125, []int{1, 5, 25, 125}},
+		{5, 126, []int{1, 5, 25, 125}},
+		{2, 130, []int{1, 2, 4, 8, 16, 32, 64, 128}},
+		{3, 1, []int{1}},
+		{3, 3, []int{1, 3}},
+		{3, 10, []int{1, 3, 9}},
+		{2, 65536, []int{1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536}},
+		//{3, 10, []int{1, 3, 8}},            //failure tests
+		//{3, 10, []int{1, 3, 9, 15}},
+	}
+	for i, sl := range a {
+		loud := func(base, upTo int) []int {
+			bat := []int{}
+			toSlice := func(i int) {
+				bat = append(bat, i)
+			}
+			Powers(base, upTo, toSlice)
+			return bat
+		}
+		tiger := loud(sl.x, sl.y)
+		if len(tiger) != len(sl.z) {
+			t.Fatalf("Bad test result, compared strings of different length at test: %d", i)
+		}
+		for o := 0; o < len(tiger); o++ {
+			if tiger[o] != sl.z[o] {
+				t.Errorf("Bad power outputted during test %d... %d != %d", i, tiger[o], sl.z[o])
+			}
+		}
+	}
 }
 
 func TestInterleave(t *testing.T) {
-	t.Errorf("TestChange not implemented")
+        {   []string{1,2},  {3,4}, {1,3,2,4}};
+        {   {1,2},  {3,4,5}, {}1,3,2,4,5}};
+        {   {1,2},  {3,4,5,6}, [1,3,2,4,5,6}};
+        {   {'a','b','c'}, {3,4}, {'a',3,'b',4,'c'}};
+        {   {1},    {3}), {1,3}};
+        {   {1,2},{}), {1,2}};
+        {   {'Aqua','Start up'},{1,2}}, {'Aqua',1,'Start up',2}};
+        {   {1,2},{'Aqua','Start up'}}, {1,'Aqua',2,'Start up'}};
+        {   {1},{2,3,4,5,6,7,8,9}}, {1,2,3,4,5,6,7,8,9}};
+        {   {}, {}, {}};
 }
 
 func TestStutter(t *testing.T) {
