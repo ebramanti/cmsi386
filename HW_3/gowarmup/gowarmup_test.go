@@ -2,7 +2,6 @@ package gowarmup
 
 import (
 	"errors"
-	"strconv"
 	"testing"
 )
 
@@ -56,14 +55,32 @@ func TestChange(t *testing.T) {
 	}
 
 	for _, sl := range a {
-		if !bytes.Equal(Change(sl.input), sl.supposedResult) {
+		if !sliceCompare(Change(sl.input), sl.supposedResult) {
 			t.Errorf("Expected %v for Change(%d)", sl.supposedResult, sl.input)
 		}
 	}
 }
 
 func TestRemoveVowels(t *testing.T) {
-	t.Errorf("TestRemove not implemented")
+	a = []struct {
+		input, output string
+	}{
+		{"Hello, world", "Hll, wrld"},
+		{"AEIOU", ""},
+		{"aeiou", ""},
+		{"Zane Quincy Kansil", "Zn Qncy Knsl"},
+		{"Tom Marvolo Riddle", "Tm Mrvl Rddl"},
+		{"AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz", "BbCcDdFfGgHhJjKkLlMmNnPpQqRrSsTtVvWwXxYyZz"},
+		{"Ballin like I got Oprah Winfrey money~", "Blln lk  gt prh Wnfry mny~"},
+		{"Sweet home Alabama", "Swt hm lbm"},
+		{"Once upon a time there was a big huge giant Moon up there.", "nc pn  tm thr ws  bg hg gnt Mn p thr."},
+		{"Toy Story 2", "Ty Stry 2"},
+		{"3.14159", "3.14159"},
+	}
+
+	for _, sl := range a {
+
+	}
 }
 
 func TestScramble(t *testing.T) {
@@ -87,12 +104,13 @@ func TestStutter(t *testing.T) {
 }
 
 func sliceCompare(x, y []int) (bool, error) {
-	if x.length != y.length {
-		c := [x.length]int{x}
-		d := [y.length]int{y}
+	if len(x) != len(y) {
+		c := [len(x)]int{x}
+		d := [len(y)]int{y}
 	} else {
 		return false, errors.New("Cannot compare slices of variant length.")
 	}
+
 }
 
 //space
