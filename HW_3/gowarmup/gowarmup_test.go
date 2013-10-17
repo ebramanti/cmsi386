@@ -1,21 +1,9 @@
 package gowarmup
 
 import (
+	"strings"
 	"testing"
 )
-
-/*
-func TestAverage(t *testing.T) {
-    average, error := Average([]float64{10.0, 1.0, 4.0})
-    if average != 5.0 && error != nil {
-        t.Errorf("Average of [10, 1, 4] should be 5")
-    }
-    _, error = Average([]float64{})
-    if error == nil {
-        t.Errorf("Average of empty slice should return an error")
-    }
-}
-*/
 
 func TestDivmod(t *testing.T) {
 	a := []struct {
@@ -43,7 +31,7 @@ func TestChange(t *testing.T) {
 		{0, 0, 0, 0, 0},
 		{1, 0, 0, 0, 1},
 		{5, 0, 0, 1, 0},
-		{8, 0, 1, 0, 3},
+		{8, 0, 0, 1, 3},
 		{10, 0, 1, 0, 0},
 		{25, 1, 0, 0, 0},
 		{97, 3, 2, 0, 2},
@@ -75,21 +63,61 @@ func TestRemoveVowels(t *testing.T) {
 		{"Once upon a time there was a big huge giant Moon up there.", "nc pn  tm thr ws  bg hg gnt Mn p thr."},
 		{"Toy Story 2", "Ty Stry 2"},
 		{"3.14159", "3.14159"},
+		//{"Hello", "Hello"}, //ensuring failure possible
 	}
 
 	for i, sl := range a {
-		if sl.input != sl.output {
+		if RemoveVowels(sl.input) != sl.output {
 			t.Errorf("Bad vowel detection for test %d", i)
 		}
 	}
 }
 
+func sameCharSet(s, t string) bool {
+	if len(s) != len(t) {
+		return false
+	} else {
+		for i := range s {
+			if !strings.Contains(t, string(s[i])) {
+				return false
+			}
+		}
+	}
+	return true
+}
+
+/*
+ *	Limited to testing Scramble for unicode-8 characters only.
+ */
 func TestScramble(t *testing.T) {
-	t.Errorf("TestChange not implemented")
+	a := []struct {
+		s string
+	}{
+		{""},
+		{"a"},
+		{"rat"},
+		{"zzz"},
+		//{"^*&^*&^▱ÄÈËɡɳɷ"},
+		{"a"},
+		{"rat"},
+		{"BSOD"},
+		{"BDFL"},
+		{"Python testing"},
+		{" a b c "},
+		{"Hannah Montana"},
+		{"142452729"},
+	}
+
+	for i, sl := range a {
+		if !sameCharSet(sl.s, Scramble(sl.s)) || len(sl.s) != len(Scramble(sl.s)) {
+			t.Errorf("Bad scramble, impossible scramble executed at test: %d", i)
+		}
+	}
+
 }
 
 func TestPowersOfTwo(t *testing.T) {
-	t.Errorf("TestChange not implemented")
+
 }
 
 func TestPowers(t *testing.T) {
