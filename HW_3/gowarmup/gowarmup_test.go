@@ -87,7 +87,7 @@ func sameCharSet(s, t string) bool {
 }
 
 /*
- *	Limited to testing Scramble for unicode-8 characters only.
+ *  Limited to testing Scramble for unicode-8 characters only.
  */
 func TestScramble(t *testing.T) {
 	a := []struct {
@@ -116,8 +116,36 @@ func TestScramble(t *testing.T) {
 
 }
 
-func TestPowersOfTwo(t *testing.T) {
+func echo(i int) {
+	return i
+}
 
+func TestPowersOfTwo(t *testing.T) {
+	a := []struct {
+		x int
+		y []int
+	}{
+		{0, []int{}},
+		{1, []int{1}},
+		{7, []int{1, 2, 4}},
+		{8, []int{1, 2, 4, 8}},
+		{15, []int{1, 2, 4, 8}},
+		{16, []int{1, 2, 4, 8, 16}},
+		{17, []int{1, 2, 4, 8, 16}},
+		{31, []int{1, 2, 4, 8, 16}},
+		{32, []int{1, 2, 4, 8, 16, 32}},
+		{33, []int{1, 2, 4, 8, 16, 32}},
+		{70, []int{1, 2, 4, 8, 16, 32, 64}},
+		{130, []int{1, 2, 4, 8, 16, 32, 64, 128}},
+		{255, []int{1, 2, 4, 8, 16, 32, 64, 128}},
+		{256, []int{1, 2, 4, 8, 16, 32, 64, 128, 256}},
+		{65536, []int{1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536}},
+		{-22, []int{}},
+	}
+
+	for i, sl := range a {
+		PowersOfTwo(sl.x, echo(i))
+	}
 }
 
 func TestPowers(t *testing.T) {
