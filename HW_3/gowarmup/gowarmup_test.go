@@ -33,3 +33,31 @@ func TestDivmod(t *testing.T) {
 		}
 	}
 }
+
+func TestChange(t *testing.T) {
+	t.Errorf("TestChange not implemented")
+}
+
+func TestRemoveVowels(t *testing.T) {
+	t.Errorf("TestRemove not implemented")
+}
+
+func TestScramble(t *testing.T) {
+	t.Errorf("TestChange not implemented")
+}
+
+func TestPowersOfTwo(t *testing.T) {
+	t.Errorf("TestChange not implemented")
+}
+
+func TestPowers(t *testing.T) {
+	t.Errorf("TestChange not implemented")
+}
+
+func TestInterleave(t *testing.T) {
+	t.Errorf("TestChange not implemented")
+}
+
+func TestStutter(t *testing.T) {
+	t.Errorf("TestChange not implemented")
+}
