@@ -1,19 +1,12 @@
 package gowarmup
 
 import (
-	"container/list"
 	"fmt"
 	"math"
+	"math/rand"
 	"regexp"
-	"strconv"
 	"strings"
 )
-
-func main() {
-	//mini test here
-	fmt.Println(change(20))
-	//..
-}
 
 func divmod(x, y int) (quotient, remainder int) {
 	quotient = x / y
@@ -24,7 +17,8 @@ func divmod(x, y int) (quotient, remainder int) {
 func change(amount int) (change []int) {
 	changeLeft := amount
 	if amount < 0 || amount%1 != 0 {
-		//
+		fmt.Println("Non-negative integer expected.")
+		panic(amount)
 	}
 	quarters, changeLeft := divmod(changeLeft, 25)
 	dimes, changeLeft := divmod(changeLeft, 10)
@@ -57,7 +51,7 @@ func print(i int) {
 }
 
 func powersOfTwo(upTo int, f func(int)) {
-	for i := 1; i <= max; i *= 2 {
+	for i := 1; i <= upTo; i *= 2 {
 		f(i)
 	}
 }
