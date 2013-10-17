@@ -1,6 +1,10 @@
 package gowarmup
 
-import "testing"
+import (
+	"errors"
+	"strconv"
+	"testing"
+)
 
 /*
 func TestAverage(t *testing.T) {
@@ -35,7 +39,27 @@ func TestDivmod(t *testing.T) {
 }
 
 func TestChange(t *testing.T) {
-	t.Errorf("TestChange not implemented")
+	a := []struct {
+		input          int
+		supposedResult []int
+	}{
+		{0, []int{0, 0, 0, 0}},
+		{1, []int{0, 0, 0, 1}},
+		{5, []int{0, 0, 1, 0}},
+		{8, []int{0, 1, 0, 3}},
+		{10, []int{0, 1, 0, 0}},
+		{25, []int{1, 0, 0, 0}},
+		{97, []int{3, 2, 0, 2}},
+		{100, []int{4, 0, 0, 0}},
+		{1000, []int{40, 0, 0, 0}},
+		{41, []int{1, 1, 1, 1}},
+	}
+
+	for _, sl := range a {
+		if !bytes.Equal(Change(sl.input), sl.supposedResult) {
+			t.Errorf("Expected %v for Change(%d)", sl.supposedResult, sl.input)
+		}
+	}
 }
 
 func TestRemoveVowels(t *testing.T) {
@@ -61,3 +85,14 @@ func TestInterleave(t *testing.T) {
 func TestStutter(t *testing.T) {
 	t.Errorf("TestChange not implemented")
 }
+
+func sliceCompare(x, y []int) (bool, error) {
+	if x.length != y.length {
+		c := [x.length]int{x}
+		d := [y.length]int{y}
+	} else {
+		return false, errors.New("Cannot compare slices of variant length.")
+	}
+}
+
+//space
