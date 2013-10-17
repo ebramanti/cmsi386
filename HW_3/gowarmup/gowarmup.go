@@ -16,7 +16,7 @@ import (
 )
 
 /*
- *	A helper method for Change() that performs a divmod operation.
+ *	A helper method for Change() that performs a Divmod operation.
  */
 func Divmod(x, y int) (quotient, remainder int) {
 	quotient = x / y
@@ -39,9 +39,9 @@ func Change(amount int) (change []int) {
 		fmt.Println("Non-negative integer expected.")
 		panic(amount)
 	}
-	quarters, changeLeft := divmod(changeLeft, 25)
-	dimes, changeLeft := divmod(changeLeft, 10)
-	nickels, changeLeft := divmod(changeLeft, 5)
+	quarters, changeLeft := Divmod(changeLeft, 25)
+	dimes, changeLeft := Divmod(changeLeft, 10)
+	nickels, changeLeft := Divmod(changeLeft, 5)
 	pennies := changeLeft
 
 	result := []int{quarters, nickels, dimes, pennies}
@@ -106,5 +106,5 @@ func Interleave(a, b []string) (c []string) {
 
 //	Problem g
 func Stutter(a []string) (c []string) {
-	return interleave(a, a)
+	return Interleave(a, a)
 }
