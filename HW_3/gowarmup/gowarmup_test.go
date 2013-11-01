@@ -77,7 +77,8 @@ func sameCharSet(s, t string) bool {
 	if len(s) != len(t) {
 		return false
 	} else {
-		for _, codePoint := range t {
+		u := []rune(t)
+		for _, codePoint := range u {
 			if !strings.Contains(s, string(codePoint)) {
 				return false
 			}
