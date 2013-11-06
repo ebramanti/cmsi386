@@ -11,9 +11,11 @@
 \maketitle
 \begin{enumerate}
 \item Abstract syntax tree for expression: 
+\begin{center}
 \begin{verbatim}
 (a = 3) <= m >= ! & 4 * ~ 6 || y %= 7 ^ 6 & p
 \end{verbatim}
+\vspace{0.4in}
 \begin{tikzpicture}[level distance=1.5cm,
   level 1/.style={sibling distance=3cm},
   level 2/.style={sibling distance=1.5cm},
@@ -36,7 +38,7 @@
           child {node{*}
             child {node{4}
             }
-            child {node{tilde}
+            child {node{\(\sim\)}
               child {node{6}
               }
             } 
@@ -58,24 +60,30 @@
       }
     };
 \end{tikzpicture}
-%\begingraphics[width=4in]{syntaxtree.png}
-\item Non-intuitive JS semicolon ambiguities
+\end{center}
+\pagebreak
+\item Non-intuitive JS semicolon ambiguities 
 \begin{enumerate}
     \item someTitle1 The first semicolon ambiguity arises because I was drinking coffee. The coffee was the exact right temperature to which a semicolon would become a full-fledged colon---it was a big day indeed.Some ballons fly shallow breezes in the dairy milks of life.
     \item someTitle2
     \item someTitle3
     \item someTitle4
 \end{enumerate}
-\item Local variables init in static storage causes malfunctions
+\pagebreak
+\item Give an example of a program in C that would not work correctly if local variables were allocated in static storage as opposed to the stack. For the purposes of this question, local variables do not include parameters. *Local variables init in static storage causes malfunctions*
+\pagebreak
 \item Statically scoped vs. Dynamically scoped
+\pagebreak
 \item Shallow binding vs. Deep binding
-\item C declatrations
+\pagebreak
+\item C declarations
 \begin{verbatim}
 double *a[n];
 double (*b)[n];
 double (*c[n])();
 double (*d())[n];
 \end{verbatim}
+\pagebreak
 \item C declarations re-done in Go
 \begin{verbatim}
 GoSol1
@@ -83,13 +91,17 @@ GoSol2
 GoSol3
 GoSol4
 \end{verbatim}
+\pagebreak
 \item Translate: (-b + sqrt(4 x a x c)) / (2 x a)
 \begin{description}
     \item[(a)] postfix notation
     \item[(b)] prefix notation
     \item[(*)] urnary negation?
 \end{description}
+\pagebreak
 \item Interleave in C++ with C-style arrays
+\pagebreak
 \item Interleave in C++ with C++ vectors
+\pagebreak
 \end{enumerate}
 \end{document}
