@@ -1,36 +1,27 @@
 #include <iostream>
 #include <string>
 
-int main()
-{
+int main() {
     int r = rand() % 2;
-    if (r == 0)
-    {
+    if (r == 0) {
         setup_a();
-    }
-    else if (r == 1)
-    {
+    } else if (r == 1) {
         setup_b();
-    }
-    else
-    { 
+    } else { 
         setup_c();
     }
     cout << magic_number << '\n';
 }
 
-void setup_a()
-{
+void setup_a() {
     static int magic_number = 8;
 }
 
-void setup_b()
-{
+void setup_b() {
     static int magic_number = 42;
 }
 
-void setup_c()
-{
+void setup_c() {
     static int magic_number = 777;
 }
 
