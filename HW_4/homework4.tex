@@ -4,7 +4,7 @@
 \usepackage{tikz}
 \usetikzlibrary{trees}
 \usepackage[T1]{fontenc}
-\setlist{parsep=0pt,listparindent=\parindent}
+\setlist{parsep=0pt, listparindent=\parindent}
 \title{CMSI 386 Homework \#4}
 \author{Zane Kansil \& Edward Bramanti}
 \begin{document}
@@ -64,8 +64,27 @@
 \pagebreak
 \item Non-intuitive JS semicolon ambiguities 
 \begin{enumerate}
-    \item someTitle1 The first semicolon ambiguity arises because I was drinking coffee. The coffee was the exact right temperature to which a semicolon would become a full-fledged colon---it was a big day indeed.Some ballons fly shallow breezes in the dairy milks of life.
-    \item someTitle2
+    \item The case is ambiguous because javascript will return whatever follows the return statement. The ambiguity is that JS can either return the result of an empty statement (undefined) or it can assume the users intent and return the otherwise dangling object \left\{x: 5\right\}. In this case JS returns undefined.
+    
+    In Python the closest translation would be:
+    \begin{verbatim}
+    def f():
+        return
+            {"x": 5}    
+    \end{verbatim}
+    The ambiguity is solved because Python throws an unexpected indent error on line 3.
+    \item In this case the programmer has omitted the semicolons to close the initialization of b and a. This causes JS to try to call b(4 + 5).toString(16) or b("9"), this is of course an error because numbers are primitive; they cannot be called.
+    In Python the closest translation would be:
+    \begin{verbatim}
+    b = 8
+    a = b + b
+    ('9')
+    \end{verbatim}
+    Python has no issues in this case because assignment (and other statements) are delimited by the newline character; no function call will be made. Simulating the exact scenario of the JS throws a similar 'int' object not callable error.
+    \begin{verbatim}
+    b = 8
+    a = b + b('9')    //throws 'int' not callable
+    \end{verbatim}
     \item someTitle3
     \item someTitle4
 \end{enumerate}
