@@ -58,5 +58,7 @@ int main() {
     char b[8] = "1234567";
     cout << interleave(a,b) << "\n";
     cout << vectorInterleave(a,b) << "\n";
+    cout << interleave(b,a) << "\n";
+    cout << vectorInterleave(b,a) << "\n";
     return 0;
 }
