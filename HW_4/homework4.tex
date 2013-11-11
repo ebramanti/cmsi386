@@ -65,7 +65,7 @@
 \pagebreak
 \item Non-intuitive JS semicolon ambiguities 
 \begin{enumerate}
-    \item The case is ambiguous because javascript will return whatever follows the return statement. The ambiguity is that JS can either return the result of an empty statement (undefined) or it can assume the users intent and return the otherwise dangling object \left\{x: 5\right\}. In this case JS returns undefined.
+    \item The case is ambiguous because javascript will return whatever follows the return statement. The ambiguity is that JS can either return the result of an empty statement (undefined) or it can assume the users intent and return the otherwise dangling object \{x: 5\}. In this case JS returns undefined.
     
     In Python the closest translation would be:
     \begin{verbatim}
@@ -94,15 +94,21 @@
 \pagebreak
 \item Statically scoped vs. Dynamically scoped
 \pagebreak
-\item Shallow binding vs. Deep binding
+\item QUESTION REPLACED 
 \pagebreak
 \item C declarations
 \begin{verbatim}
-double *a[n];
+double *a[n];  
 double (*b)[n];
 double (*c[n])();
 double (*d())[n];
 \end{verbatim}
+\begin{itemize}
+    \item a is array of n pointer to double.
+    \item b is pointer to array of n double.
+    \item c is array of pointer to function returning double.
+    \item d is function returning pointer to array of n double.
+\end{itemize}
 \pagebreak
 \item C declarations re-done in Go
 \begin{verbatim}
