@@ -112,16 +112,18 @@ double (*d())[n];
 \pagebreak
 \item C declarations re-done in Go
 \begin{verbatim}
-GoSol1
-GoSol2
-GoSol3
-GoSol4
+type doublef func() double
+
+*[n]a double
+[n]*b double
+c := [n]doublef{...}
+d := func() *[]double {...}
 \end{verbatim}
 \pagebreak
 \item Translate: (-b + sqrt(4 x a x c)) / (2 x a)
 \begin{description}
-    \item[(a)] postfix notation
-    \item[(b)] prefix notation
+    \item[(a)] postfix notation \verb{b - 4 a c x x sqrt + 2 a x /}
+    \item[(b)] prefix notation \verb{/ + - b sqrt x 4 x a c x 2 a} 
     \item[(*)] urnary negation?
 \end{description}
 \pagebreak
