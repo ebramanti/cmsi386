@@ -54,12 +54,17 @@ vector<string> vectorInterleave(vector<string> a, vector<string> b) {
 int main() {
     char a[5] = "Dude";
     char b[8] = "1234567";
-    std::vector<std::string> c(5, "Mo");
-    std::vector<std::string> d(5, "Mo");
     cout << interleave(a,4,b,7) << "\n";
-    copy(path.begin(), path.end(), ostream_iterator<string>(cout, " "));
-    //std::cout << vectorInterleave(c,d) << "\n";
     cout << interleave(b,7,a,4) << "\n";
-    //std::cout << vectorInterleave(d,c) << "\n";
+    vector <string> c;
+    c.push_back("Hello");
+    c.push_back("GoodBye");
+    vector <string> d;
+    d.push_back("Turtles");
+    d.push_back("Toolbags");
+    vector<string> result_string = vectorInterleave(c,d);
+    for(int i = 0; i < result_string.size(); i++){
+      cout << result_string[i] << endl;
+    }
     return 0;
 }
