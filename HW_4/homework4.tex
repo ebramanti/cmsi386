@@ -123,11 +123,33 @@
 \item Give an example of a program in C that would not work correctly if local variables were allocated in static storage as opposed to the stack. For the purposes of this question, local variables do not include parameters. *Local variables init in static storage causes malfunctions*\\
 \verbatiminput{a.c}
 \pagebreak
-\item Statically scoped vs. Dynamically scoped
+\item Consider the following pseudocode:
+\begin{verbatim}
+var x = 100;
+function setX(n) {x = n;}
+function printX() {console.log(x);}
+function first() {setX(1); printX();}
+function second() {var x; setX(2); printX();}
+setX(0);
+first();
+printX();
+second();
+printX();
+\end{verbatim}
+
+What does this program print if the language uses static scoping? What does it print with dynamic scoping? Why? \\
+\begin{itemize}
+\item In static scoping, this results in an output of \texttt{1,1,2,2}. The second execution of \texttt{setX()} changes the variable \texttt{x} to 2. Therefore, the last \texttt{printX()} in the script prints 2. 
+\item Dynamic scoping results in an output of \texttt{1,1,2,1}. The second \texttt{setX()} call changes the local \texttt{x} to 2, leaving the global \texttt{x} unaffected.
+\end{itemize}
 \pagebreak
-\item QUESTION REPLACED 
+\item The expression \texttt{a - f(b) - c*d} can produce different values depending on how a compiler decides to order, or even parallelize operations.  Give a small program in the language of your choice (or even one of your own design) that would produce differentvalues for this expression for different evaluation orders. \\\\
+An example program (parallel.js) is listed below.
+\verbatiminput{parallel.js}
+If the statement is evaluated from left to right, it will evaluate to: \texttt{1 - 10 - 10*4}, which equals \texttt{-49}. \\
+If the statement is evaluated in parallel, such that \texttt{f(b)} and \texttt{c*d} are evaluated independent of one another,  it will be evaluated like this: \texttt{1 - 10 - 3*4}, which equals \texttt{-21}.
 \pagebreak
-\item C declarations
+\item Explain the meaning of the following C declarations:
 \begin{verbatim}
 double *a[n];  
 double (*b)[n];
@@ -135,13 +157,13 @@ double (*c[n])();
 double (*d())[n];
 \end{verbatim}
 \begin{itemize}
-    \item a is array of n pointer to double.
-    \item b is pointer to array of n double.
-    \item c is array of pointer to function returning double.
-    \item d is function returning pointer to array of n double.
+    \item \texttt{a} is array of \texttt{n} pointer to \texttt{double}.
+    \item \texttt{b} is pointer to array of \texttt{n double}.
+    \item \texttt{c} is array of pointer to function returning \texttt{double}.
+    \item \texttt{d} is function returning pointer to array of \texttt{n double}.
 \end{itemize}
 \pagebreak
-\item C declarations re-done in Go
+\item Rewrite the four declarations in the previous problem in Go.
 \begin{verbatim}
 type doublef func() double
 
@@ -152,10 +174,10 @@ d := func() *[]double {...}
 \end{verbatim}
 \pagebreak
 \item Translate the following expression: \texttt{(-b + sqrt(4 * a * c)) / (2 * a)}
-    \item[(a)]Postfix notation: \\\texttt{b ~ 4 a * c * sqrt + 2 a * /} \\
-    \item[(b)]Prefix notation: \\\texttt{/ + ~ b sqrt * * 4 a c * 2 a} \\ 
+    \item[(a)]Postfix notation: \\\texttt{b \(\sim\) 4 a * c * sqrt + 2 a * /} \\
+    \item[(b)]Prefix notation: \\\texttt{/ + \(\sim\) b sqrt * * 4 a c * 2 a} \\ 
     \item[(*)] Do you need a special symbol for unary negation? Why or why not? \\
-    Yes, we need a special symbol for unary negation (~, for example). We need the symbol because we are not using parentheses in the postfix and prefix notations. You can't use the same symbol unless parentheses are allowed in the answer.
+    Yes, we need a special symbol for unary negation (\(\sim\), for example). We need the symbol because we are not using parentheses in the postfix and prefix notations. You can't use the same symbol unless parentheses are allowed in the answer.
 \pagebreak
 \item Interleave in C++ with C-style arrays and with Vectors
 \verbatiminput{interleave.cpp}

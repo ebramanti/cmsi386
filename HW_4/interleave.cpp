@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <vector>
 using namespace std;
 
@@ -28,37 +29,37 @@ char* interleave(char a[], int aLength, char b[], int bLength) {
 }
 
 //  Problem #10
-char* vectorInterleave(char a[], char b[]) {
-    unsigned length = strlen(a) + strlen(b);
-    vector<char> result;
+vector<string> vectorInterleave(vector<string> a, vector<string> b) {
+    unsigned length = a.size() + b.size();
+    vector<string> result;
     int i = 0;
     int j = 0;
     int location = 0;
     while (location < length) {
-        if (i < strlen(a)) {
+        if (i < a.size()) {
             result.push_back(a[i]);
             i++;
             location++;
         }
 
-        if (j < strlen(b)) {
+        if (j < b.size()) {
             result.push_back(b[j]);
             j++;
             location++;
         }
     }
-    /* A vector guarantees that its elements occupy contiguous memory, 
-     * so data is at address of the first element.
-     */
-    return &result[0];
+    return result;
 }
 
 int main() {
     char a[5] = "Dude";
     char b[8] = "1234567";
+    std::vector<std::string> c(5, "Mo");
+    std::vector<std::string> d(5, "Mo");
     cout << interleave(a,4,b,7) << "\n";
-    cout << vectorInterleave(a,b) << "\n";
+    copy(path.begin(), path.end(), ostream_iterator<string>(cout, " "));
+    //std::cout << vectorInterleave(c,d) << "\n";
     cout << interleave(b,7,a,4) << "\n";
-    cout << vectorInterleave(b,a) << "\n";
+    //std::cout << vectorInterleave(d,c) << "\n";
     return 0;
 }
