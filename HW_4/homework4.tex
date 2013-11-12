@@ -20,42 +20,43 @@
 \begin{tikzpicture}[level distance=1.5cm,
   level 1/.style={sibling distance=3cm},
   level 2/.style={sibling distance=1.5cm},
-  level 3/.style={sibling distance=1.5cm},
+  level 3/.style={sibling distance=3cm},
   level 4/.style={sibling distance=1.5cm},
   level 5/.style={sibling distance=1.5cm},
-  level 6/.style={sibling distance=1.5cm}
+  level 6/.style={sibling distance=1.5cm},
+  level 7/.style={sibling distance=1.5cm}
 ]
-  \node {\textgreater=}
-    child {node {\textless=}
-      child {node {=}
-        child {node{a}}
-        child {node{3}}
-      }
-      child {node {m}}
-    }
-    child {node {||}
-      child {node {!}
-        child {node{\&}
-          child {node{*}
-            child {node{4}
+  \node {\%=}
+    child {node{\(\vert\)\(\vert\)}
+      child {node{\textgreater=}
+        child {node{\textgreater=}
+          child {node {=}
+            child {node {a}
             }
-            child {node{\(\sim\)}
-              child {node{6}
+            child {node {3}
+            }
+          }
+        }
+        child {node{*}
+          child{node{!}
+            child{node{\&}
+              child{node{4}
               }
-            } 
+            }
+          }
+          child{node{\(\sim\)}
           }
         }
       }
-      child {node {\%=}
-        child {node {y}}
-        child {node {\^{}}
-          child {node {7}
-          }
-          child {node {\&}
-            child {node {6}
-            }
-            child {node {p}
-            }
+      child {node{y}
+      }
+    }
+    child {node{\^{}}
+      child {node{7}
+      }
+      child {node{6}
+        child{node{\&}
+          child{node{p}
           }
         }
       }
@@ -120,8 +121,9 @@
     This case is ambiguous because it seems as though \texttt{sayHello()} is a declaration, and the second function looks like it is being called. But, since there is no semicolon to break the first function definition, the parentheses around the second function act as a function call. It does not pass a value; instead, it calls a \texttt{void} function, which prints \texttt{"Goodbye"}. The script will print \texttt{"Goodbye"} first, and then \texttt{"Hello"}. Python does not run into this problem, because a function call has to be on the same line. The \texttt{NEWLINE} character will prevent anything that looks like a potential function call written on separate lines.
 \end{enumerate}
 \pagebreak
-\item Give an example of a program in C that would not work correctly if local variables were allocated in static storage as opposed to the stack. For the purposes of this question, local variables do not include parameters. *Local variables init in static storage causes malfunctions*\\
+\item Give an example of a program in C that would not work correctly if local variables were allocated in static storage as opposed to the stack. For the purposes of this question, local variables do not include parameters.\\
 \verbatiminput{a.c}
+If allocated to the stack, the value of \texttt{a} will return to 99 when \texttt{f(1)} is tail-called. Therefore, the  \texttt{printf()} will return 99. Conversely, if  \texttt{a} is in static storage (like so: \texttt{static int a = 99;}), then \texttt{a} becomes 100 at the end of the first call to \texttt{f()}, and remains 100 during the second call, resulting in a \texttt{printf()} of 100.
 \pagebreak
 \item Consider the following pseudocode:
 \begin{verbatim}
@@ -165,12 +167,10 @@ double (*d())[n];
 \pagebreak
 \item Rewrite the four declarations in the previous problem in Go.
 \begin{verbatim}
-type doublef func() double
-
-*[n]a double
-[n]*b double
-c := [n]doublef{...}
-d := func() *[]double {...}
+var a[n]* float64
+var b*[n] float64
+var c[n]*func() float64
+var d func()*[n] float64
 \end{verbatim}
 \pagebreak
 \item Translate the following expression: \texttt{(-b + sqrt(4 * a * c)) / (2 * a)}

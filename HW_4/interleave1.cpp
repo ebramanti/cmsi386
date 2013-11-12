@@ -1,5 +1,3 @@
-#include <vector>
-
 char* interleave(char a[], int aLength, char b[], int bLength) {
     unsigned length = aLength + bLength;
     char* result = new char[length + 1];
