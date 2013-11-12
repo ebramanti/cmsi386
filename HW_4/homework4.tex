@@ -63,9 +63,16 @@
 \end{tikzpicture}
 \end{center}
 \pagebreak
-\item Non-intuitive JS semicolon ambiguities 
+\item Non-intuitive Javascript semicolon ambiguities 
 \begin{enumerate}
-    \item The case is ambiguous because javascript will return whatever follows the return statement. The ambiguity is that JS can either return the result of an empty statement (undefined) or it can assume the users intent and return the otherwise dangling object \{x: 5\}. In this case JS returns undefined.
+    \item 
+    \begin{verbatim}
+    function f() {
+      return
+         {x: 5}
+    }
+    \end{verbatim} \\
+    The case is ambiguous because Javascript will return whatever follows the return statement. JS can either return the result of an empty statement (undefined) or it can assume the users intent and return the otherwise dangling object \{x: 5\}. In this case JS returns undefined.
     
     In Python the closest translation would be:
     \begin{verbatim}
@@ -73,24 +80,48 @@
         return
             {"x": 5}    
     \end{verbatim}
-    The ambiguity is solved because Python throws an unexpected indent error on line 3.
-    \item In this case the programmer has omitted the semicolons to close the initialization of b and a. This causes JS to try to call b(4 + 5).toString(16) or b("9"), this is of course an error because numbers are primitive; they cannot be called.
+    The ambiguity is solved because Python throws an unexpected indent error on line 3. \\
+    \item 
+    \begin{verbatim}
+    var b = 8
+    var a = b + b
+    (4 + 5).toString(16)
+    \end{verbatim} \\
+    In this case the programmer has omitted the semicolons to delimit the initialization of b and a. This causes JS to try to call \texttt{b(4 + 5).toString(16)}, or \texttt{b("9")}. This is of course an error because numbers are primitive; they cannot be called.
     In Python the closest translation would be:
     \begin{verbatim}
     b = 8
     a = b + b
-    ('9')
+    ('0x9')
     \end{verbatim}
     Python has no issues in this case because assignment (and other statements) are delimited by the newline character; no function call will be made. Simulating the exact scenario of the JS throws a similar 'int' object not callable error.
     \begin{verbatim}
     b = 8
-    a = b + b('9')    //throws 'int' not callable
+    a = b + b('0x9')    //throws 'int' not callable
     \end{verbatim}
-    \item someTitle3
-    \item someTitle4
+    \item 
+    \begin{verbatim}
+    var place = "mundo"
+    ["Hola", "Ciao"].forEach(function (command) {
+      alert(command + ", " + place)
+    })
+    \end{verbatim} \\
+    This case is ambiguous because \texttt{"mundo"} is being indexed with the array \texttt{["Hola","Ciao"]}. The array of \texttt{["Hola","Ciao"]} can not be casted to an integer. Indexing a string with a non-integer, or an integer that is out of bounds, results in the string being evaluated to \texttt{undefined}. Therefore, the case is calling \texttt{forEach()} on \texttt{undefined}. Python solves this issue because statements end with \texttt{NEWLINE}. \\
+    \item
+    \begin{verbatim}
+    var sayHello = function () {
+      alert("Hello")
+    }
+
+    (function() {
+      alert("Goodbye")
+    }())
+    \end{verbatim} \\
+    This case is ambiguous because it seems as though \texttt{sayHello()} is a declaration, and the second function looks like it is being called. But, since there is no semicolon to break the first function definition, the parentheses around the second function act as a function call. It does not pass a value; instead, it calls a \texttt{void} function, which prints \texttt{"Goodbye"}. The script will print \texttt{"Goodbye"} first, and then \texttt{"Hello"}. Python does not run into this problem, because a function call has to be on the same line. The \texttt{NEWLINE} character will prevent anything that looks like a potential function call written on separate lines.
 \end{enumerate}
 \pagebreak
-\item Give an example of a program in C that would not work correctly if local variables were allocated in static storage as opposed to the stack. For the purposes of this question, local variables do not include parameters. *Local variables init in static storage causes malfunctions*
+\item Give an example of a program in C that would not work correctly if local variables were allocated in static storage as opposed to the stack. For the purposes of this question, local variables do not include parameters. *Local variables init in static storage causes malfunctions*\\
+\verbatiminput{a.c}
 \pagebreak
 \item Statically scoped vs. Dynamically scoped
 \pagebreak
@@ -120,15 +151,14 @@ c := [n]doublef{...}
 d := func() *[]double {...}
 \end{verbatim}
 \pagebreak
-\item Translate: (-b + sqrt(4 x a x c)) / (2 x a)
-\begin{description}
-    \item[(a)] postfix notation \verb{b - 4 a c x x sqrt + 2 a x /}
-    \item[(b)] prefix notation \verb{/ + - b sqrt x 4 x a c x 2 a} 
-    \item[(*)] urnary negation?
-\end{description}
+\item Translate the following expression: \texttt{(-b + sqrt(4 * a * c)) / (2 * a)}
+    \item[(a)]Postfix notation: \\\texttt{b ~ 4 a * c * sqrt + 2 a * /} \\
+    \item[(b)]Prefix notation: \\\texttt{/ + ~ b sqrt * * 4 a c * 2 a} \\ 
+    \item[(*)] Do you need a special symbol for unary negation? Why or why not? \\
+    Yes, we need a special symbol for unary negation (~, for example). We need the symbol because we are not using parentheses in the postfix and prefix notations. You can't use the same symbol unless parentheses are allowed in the answer.
 \pagebreak
 \item Interleave in C++ with C-style arrays and with Vectors
-\verbatimimput{interleave.cpp}
+\verbatiminput{interleave.cpp}
 \pagebreak
 \end{enumerate}
 \end{document}
