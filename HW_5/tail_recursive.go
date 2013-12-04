@@ -23,13 +23,13 @@ func findMinValue(a []int, length int) {
 
 func minValueHelper(a []int, length int, i int, sofar int) int {
     if (i == length - 1) {
-    	if a[i] < sofar {
-	    fmt.Println(a[i]) 
- 	    return a[i]
-	} else {
-	    fmt.Println(sofar) 	
-	    return sofar
-	}
+        if a[i] < sofar {
+            fmt.Println(a[i]) 
+            return a[i]
+        } else {
+            fmt.Println(sofar) 	
+            return sofar
+        }
     } else if (a[i] < sofar) {
         sofar = a[i]
     }
