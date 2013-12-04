@@ -31,8 +31,7 @@
     \end{verbatim}
 	Suppose the rules for this language stated that this language used structural equivalence for types. How would you feel if you were a compiler and had to typecheck an expression in which an A was used as a B? What problem might you run into?
 	\pagebreak
-	\item Write a program in C++, JavaScript, Python, Ruby, Scala, or Clojure that determines the order in which subroutine arguments are evaluated. \\
-	\linebreak
+	\item Write a program in C++, JavaScript, Python, Ruby, Scala, or Clojure that determines the order in which subroutine arguments are evaluated.\\*[.1in]
 	We decided to write our subroutine in Javascript.
 	\verbatiminput{subroutine.js}
 	\pagebreak
@@ -47,7 +46,12 @@
 		    for (j = 1; j <= 10; j++) foo();
 		}
 	\end{verbatim}
-	Local variable i in subroutine foo is never initialized. On many systems, however, the program will display repeatable behavior, printing 0 1 2 3 4 5 6 7 8 9. Suggest an explanation. Also explain why the behavior on other systems might be different, or nondeterministic.
+	Local variable i in subroutine foo is never initialized. On many systems, however, the program will display repeatable behavior, printing 0 1 2 3 4 5 6 7 8 9. Suggest an explanation. Also explain why the behavior on other systems might be different, or nondeterministic. \\
+
+	First, \texttt{main()} is placed on the stack. Then, \texttt{foo()} is called, placing it on top of \texttt{main()} in the stack. Somewhere in the stack space of \texttt{foo()}, \texttt{int i} is declared, but not initialized. If you initialize a variable without a value, then it seems to not change anything about the specific stack space that it occupies. Then, i is incremented. Each time \texttt{foo()} is called, the new stack frame ends up in the exact same storage space as the previous call. Due to the fact that initializing a variable (\texttt{int i}) does not change the stack space that it occupies, the incrementations to \texttt{int i} of the previous \texttt{foo()} call are preserved. \\
+
+	On other systems where it will not naturally print \texttt{0 1 2 3 4 5 6 7 8 9}, it may be because \texttt{int i} is not being reliably initialized to the same stack space within \texttt{foo()}.
+	
 	\setcounter{enumi}{7}
 	\pagebreak
 	\item In some implementations of an old language called Fortran IV, the following code would print a 3. 
@@ -61,7 +65,9 @@
 	        return
 	    end
     \end{verbatim}
-	Can you suggest an explanation? (Hint: Fortran passes by reference.) More recent versions of the Fortran langauge don't have this problem. How can it be that two versions of the same language can give different results even though parameters are officially passed ``the same way". Note that knowledge of Fortran is not required for this problem.
+	Can you suggest an explanation? (Hint: Fortran passes by reference.) More recent versions of the Fortran langauge don't have this problem. How can it be that two versions of the same language can give different results even though parameters are officially passed ``the same way". Note that knowledge of Fortran is not required for this problem.\\[.25in]
+	The earlier version of Fortran passes all values by reference. In the sample program the value 2 is passed by reference into subroutine foo which increments it's parameter by 1. In this case, 2 is not a variable but hard-coded integer value. What seems to be happening is that when 2 is incremented as a result of pass by reference, ALL hard-coded 2's are incremented. \\[.1in]
+	This has the unfortunate effect of causing the \texttt{print* 2} statement to print \texttt{3} instead. The more recent version of Fortran probably solves this by passing by unique reference, protecting other hard-coded variables from being changed as a side effect of a subroutine.
 	\setcounter{enumi}{9}
 	\pagebreak
 	\item Explain what is printed under (a) call by value, (b) call by value-result, (c) call by reference, (d) call by name.
