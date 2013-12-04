@@ -10,11 +10,19 @@
 \maketitle
 \begin{enumerate}
 	\setcounter{enumi}{2}
-	\item Write a tail-recursive function to compute the minimum value of an array in Python, C, JavaScript, and Go.
-	\\
+	\item Write a tail-recursive function to compute the minimum value of an array in Python, C, JavaScript, and Go. \\*
+	\linebreak
 	Python:
-	\begin{verbatim}
-	\end{verbatim}
+	\verbatiminput{tail_recursive.py}
+	\pagebreak
+	C:
+	\verbatiminput{tail_recursive.c}
+	\pagebreak
+	JavaScript:
+	\verbatiminput{tail_recursive.js}
+	\pagebreak
+	Go:
+	\verbatiminput{tail_recursive.go}
 	\pagebreak
 	\item Here's some code in some language that looks exactly like C++. It's sort of like Go, also, except the pointer types are kind of backwards. It is defining two mutually recursive types, A and B.
 	\begin{verbatim}
@@ -23,7 +31,10 @@
     \end{verbatim}
 	Suppose the rules for this language stated that this language used structural equivalence for types. How would you feel if you were a compiler and had to typecheck an expression in which an A was used as a B? What problem might you run into?
 	\pagebreak
-	\item Write a program in C++, JavaScript, Python, Ruby, Scala, or Clojure that determines the order in which subroutine arguments are evaluated.
+	\item Write a program in C++, JavaScript, Python, Ruby, Scala, or Clojure that determines the order in which subroutine arguments are evaluated. \\
+	\linebreak
+	We decided to write our subroutine in Javascript.
+	\verbatiminput{subroutine.js}
 	\pagebreak
 	\item Consider the following (erroneous) program in C:
 	\begin{verbatim}
