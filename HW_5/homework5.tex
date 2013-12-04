@@ -9,8 +9,59 @@
 \begin{document}
 \maketitle
 \begin{enumerate}
-\item Junk
-
-
+	\setcounter{enumi}{2}
+	\item Write a tail-recursive function to compute the minimum value of an array in Python, C, JavaScript, and Go.
+	\pagebreak
+	\item Here's some code in some language that looks exactly like C++. It's sort of like Go, also, except the pointer types are kind of backwards. It is defining two mutually recursive types, A and B.
+	\begin{verbatim}
+    	struct A {B* x; int y;};
+    	struct B {A* x; int y;};
+    \end{verbatim}
+	Suppose the rules for this language stated that this language used structural equivalence for types. How would you feel if you were a compiler and had to typecheck an expression in which an A was used as a B? What problem might you run into?
+	\pagebreak
+	\item Write a program in C++, JavaScript, Python, Ruby, Scala, or Clojure that determines the order in which subroutine arguments are evaluated.
+	\pagebreak
+	\item Consider the following (erroneous) program in C:
+	\begin{verbatim}
+		void foo() {
+		    int i;
+		    printf("%d ", i++);
+		}
+		int main() {
+		    int j;
+		    for (j = 1; j <= 10; j++) foo();
+		}
+	\end{verbatim}
+	Local variable i in subroutine foo is never initialized. On many systems, however, the program will display repeatable behavior, printing 0 1 2 3 4 5 6 7 8 9. Suggest an explanation. Also explain why the behavior on other systems might be different, or nondeterministic.
+	\setcounter{enumi}{7}
+	\pagebreak
+	\item In some implementations of an old language called Fortran IV, the following code would print a 3. 
+	\begin{verbatim} 
+	    call foo(2)
+	    print* 2
+	    stop
+	    end
+	    subroutine foo(x)
+	        x = x + 1
+	        return
+	    end
+    \end{verbatim}
+	Can you suggest an explanation? (Hint: Fortran passes by reference.) More recent versions of the Fortran langauge don't have this problem. How can it be that two versions of the same language can give different results even though parameters are officially passed ``the same way". Note that knowledge of Fortran is not required for this problem.
+	\setcounter{enumi}{9}
+	\pagebreak
+	\item Explain what is printed under (a) call by value, (b) call by value-result, (c) call by reference, (d) call by name.
+	\begin{verbatim}
+		x = 1;
+		y = [2, 3, 4];
+		sub f(a, b) {b++; a = x + 1;}
+		f(y[x], x);
+		print x, y;
+	\end{verbatim}
+	\pagebreak
+	\item I've written a simple JavaScript queue type that does not use encapsulation. Can we achieve encapsulation using the module system in node.js? If so, implement it. If not, state why not.
+	\pagebreak
+	\item EXTRA CREDIT: It is certainly possible to make a Person class, then subclasses of Person for different jobs, like Manager, Employee, Student, Monitor, Advisor, Teacher, Officer and so on. But this is a bad idea, even though the IS-A test passes. Why is this a bad idea and how should this society of classes be built?
+	\pagebreak
+	\item Write in Java, Python, JavaScript, and C++, a module with a function called nextOdd (or next\_odd or next-odd depending on the naming conventions of the language's culture). The first time you call this subroutine you get the value 1. The next time, you get a 3, then 5, then 7, and so on. Show a snippet of code that uses this subroutine from outside the module. Is it possible to make this module hack-proof? In other words, once you compile this module, can you be sure that malicious code can't do something to disrupt the sequence of values resulting from successive calls to this function?
 \end{enumerate}
 \end{document}
