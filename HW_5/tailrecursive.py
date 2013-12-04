@@ -19,6 +19,3 @@ print findMinValue(a)
 print findMinValue(b)
 print findMinValue(c)
 print findMinValue(d)
-
-
-
