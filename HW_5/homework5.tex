@@ -9,80 +9,128 @@
 \begin{document}
 \maketitle
 \begin{enumerate}
-	\setcounter{enumi}{2}
-	\item Write a tail-recursive function to compute the minimum value of an array in Python, C, JavaScript, and Go. \\*
-	\linebreak
-	Python:
-	\verbatiminput{tail_recursive.py}
-	\pagebreak
-	C:
-	\verbatiminput{tail_recursive.c}
-	\pagebreak
-	JavaScript:
-	\verbatiminput{tail_recursive.js}
-	\pagebreak
-	Go:
-	\verbatiminput{tail_recursive.go}
-	\pagebreak
-	\item Here's some code in some language that looks exactly like C++. It's sort of like Go, also, except the pointer types are kind of backwards. It is defining two mutually recursive types, A and B.
-	\begin{verbatim}
-    	struct A {B* x; int y;};
-    	struct B {A* x; int y;};
+    \setcounter{enumi}{2}
+    \item Write a tail-recursive function to compute the minimum value of an array in Python, C, JavaScript, and Go. \\*
+    \linebreak
+    Python:
+    \verbatiminput{tail_recursive.py}
+    \pagebreak
+    C:
+    \verbatiminput{tail_recursive.c}
+    \pagebreak
+    JavaScript:
+    \verbatiminput{tail_recursive.js}
+    \pagebreak
+    Go:
+    \verbatiminput{tail_recursive.go}
+    \pagebreak
+    \item Here's some code in some language that looks exactly like C++. It's sort of like Go, also, except the pointer types are kind of backwards. It is defining two mutually recursive types, A and B.
+    \begin{verbatim}
+        struct A {B* x; int y;};
+        struct B {A* x; int y;};
     \end{verbatim}
-	Suppose the rules for this language stated that this language used structural equivalence for types. How would you feel if you were a compiler and had to typecheck an expression in which an A was used as a B? What problem might you run into?
-	\pagebreak
-	\item Write a program in C++, JavaScript, Python, Ruby, Scala, or Clojure that determines the order in which subroutine arguments are evaluated.\\*[.1in]
-	We decided to write our subroutine in Javascript.
-	\verbatiminput{subroutine.js}
-	\pagebreak
-	\item Consider the following (erroneous) program in C:
-	\begin{verbatim}
-		void foo() {
-		    int i;
-		    printf("%d ", i++);
-		}
-		int main() {
-		    int j;
-		    for (j = 1; j <= 10; j++) foo();
-		}
-	\end{verbatim}
-	Local variable i in subroutine foo is never initialized. On many systems, however, the program will display repeatable behavior, printing 0 1 2 3 4 5 6 7 8 9. Suggest an explanation. Also explain why the behavior on other systems might be different, or nondeterministic. \\
-
-	First, \texttt{main()} is placed on the stack. Then, \texttt{foo()} is called, placing it on top of \texttt{main()} in the stack. Somewhere in the stack space of \texttt{foo()}, \texttt{int i} is declared, but not initialized. If you initialize a variable without a value, then it seems to not change anything about the specific stack space that it occupies. Then, i is incremented. Each time \texttt{foo()} is called, the new stack frame ends up in the exact same storage space as the previous call. Due to the fact that initializing a variable (\texttt{int i}) does not change the stack space that it occupies, the incrementations to \texttt{int i} of the previous \texttt{foo()} call are preserved. \\
-
-	On other systems where it will not naturally print \texttt{0 1 2 3 4 5 6 7 8 9}, it may be because \texttt{int i} is not being reliably initialized to the same stack space within \texttt{foo()}.
-	
-	\setcounter{enumi}{7}
-	\pagebreak
-	\item In some implementations of an old language called Fortran IV, the following code would print a 3. 
-	\begin{verbatim} 
-	    call foo(2)
-	    print* 2
-	    stop
-	    end
-	    subroutine foo(x)
-	        x = x + 1
-	        return
-	    end
+    Suppose the rules for this language stated that this language used structural equivalence for types. How would you feel if you were a compiler and had to typecheck an expression in which an A was used as a B? What problem might you run into?
+    \pagebreak
+    \item Write a program in C++, JavaScript, Python, Ruby, Scala, or Clojure that determines the order in which subroutine arguments are evaluated.\\*[.1in]
+    We decided to write our subroutine in Javascript.
+    \verbatiminput{subroutine.js}
+    \pagebreak
+    \item Consider the following (erroneous) program in C:
+    \begin{verbatim}
+        void foo() {
+            int i;
+            printf("%d ", i++);
+        }
+        int main() {
+            int j;
+            for (j = 1; j <= 10; j++) foo();
+        }
     \end{verbatim}
-	Can you suggest an explanation? (Hint: Fortran passes by reference.) More recent versions of the Fortran langauge don't have this problem. How can it be that two versions of the same language can give different results even though parameters are officially passed ``the same way". Note that knowledge of Fortran is not required for this problem.\\[.25in]
-	The earlier version of Fortran passes all values by reference. In the sample program the value 2 is passed by reference into subroutine foo which increments it's parameter by 1. In this case, 2 is not a variable but hard-coded integer value. What seems to be happening is that when 2 is incremented as a result of pass by reference, ALL hard-coded 2's are incremented. \\[.1in]
-	This has the unfortunate effect of causing the \texttt{print* 2} statement to print \texttt{3} instead. The more recent version of Fortran probably solves this by passing by unique reference, protecting other hard-coded variables from being changed as a side effect of a subroutine.
-	\setcounter{enumi}{9}
-	\pagebreak
-	\item Explain what is printed under (a) call by value, (b) call by value-result, (c) call by reference, (d) call by name.
-	\begin{verbatim}
-		x = 1;
-		y = [2, 3, 4];
-		sub f(a, b) {b++; a = x + 1;}
-		f(y[x], x);
-		print x, y;
-	\end{verbatim}
-	\pagebreak
-	\item I've written a simple JavaScript queue type that does not use encapsulation. Can we achieve encapsulation using the module system in node.js? If so, implement it. If not, state why not.
-	\pagebreak
-	\item EXTRA CREDIT: It is certainly possible to make a Person class, then subclasses of Person for different jobs, like Manager, Employee, Student, Monitor, Advisor, Teacher, Officer and so on. But this is a bad idea, even though the IS-A test passes. Why is this a bad idea and how should this society of classes be built?
-	\pagebreak
-	\item Write in Java, Python, JavaScript, and C++, a module with a function called nextOdd (or next\_odd or next-odd depending on the naming conventions of the language's culture). The first time you call this subroutine you get the value 1. The next time, you get a 3, then 5, then 7, and so on. Show a snippet of code that uses this subroutine from outside the module. Is it possible to make this module hack-proof? In other words, once you compile this module, can you be sure that malicious code can't do something to disrupt the sequence of values resulting from successive calls to this function?
+    Local variable i in subroutine foo is never initialized. On many systems, however, the program will display repeatable behavior, printing 0 1 2 3 4 5 6 7 8 9. Suggest an explanation. Also explain why the behavior on other systems might be different, or nondeterministic. \\
+
+    First, \texttt{main()} is placed on the stack. Then, \texttt{foo()} is called, placing it on top of \texttt{main()} in the stack. Somewhere in the stack space of \texttt{foo()}, \texttt{int i} is declared, but not initialized. If you initialize a variable without a value, then it seems to not change anything about the specific stack space that it occupies. Then, i is incremented. Each time \texttt{foo()} is called, the new stack frame ends up in the exact same storage space as the previous call. Due to the fact that initializing a variable (\texttt{int i}) does not change the stack space that it occupies, the incrementations to \texttt{int i} of the previous \texttt{foo()} call are preserved. \\
+
+    On other systems where it will not naturally print \texttt{0 1 2 3 4 5 6 7 8 9}, it may be because \texttt{int i} is not being reliably initialized to the same stack space within \texttt{foo()}.
+    
+    \setcounter{enumi}{7}
+    \pagebreak
+    \item In some implementations of an old language called Fortran IV, the following code would print a 3. 
+    \begin{verbatim} 
+        call foo(2)
+        print* 2
+        stop
+        end
+        subroutine foo(x)
+            x = x + 1
+            return
+        end
+    \end{verbatim}
+    Can you suggest an explanation? (Hint: Fortran passes by reference.) More recent versions of the Fortran langauge don't have this problem. How can it be that two versions of the same language can give different results even though parameters are officially passed ``the same way". Note that knowledge of Fortran is not required for this problem.\\[.25in]
+    The earlier version of Fortran passes all values by reference. In the sample program the value 2 is passed by reference into subroutine foo which increments it's parameter by 1. In this case, 2 is not a variable but hard-coded integer value. What seems to be happening is that when 2 is incremented as a result of pass by reference, ALL hard-coded 2's are incremented. \\[.1in]
+    This has the unfortunate effect of causing the \texttt{print* 2} statement to print \texttt{3} instead. The more recent version of Fortran probably solves this by passing by unique reference, protecting other hard-coded variables from being changed as a side effect of a subroutine.
+    \setcounter{enumi}{9}
+    \pagebreak
+    \item Explain what is printed under (a) call by value, (b) call by value-result, (c) call by reference, (d) call by name.
+    \begin{verbatim}
+        x = 1;
+        y = [2, 3, 4];
+        sub f(a, b) {b++; a = x + 1;}
+        f(y[x], x);
+        print x, y;
+    \end{verbatim}
+    \pagebreak
+    \item I've written a simple JavaScript queue type that does not use encapsulation. Can we achieve encapsulation using the module system in node.js? If so, implement it. If not, state why not.
+    \pagebreak
+    \item EXTRA CREDIT: It is certainly possible to make a Person class, then subclasses of Person for different jobs, like Manager, Employee, Student, Monitor, Advisor, Teacher, Officer and so on. But this is a bad idea, even though the IS-A test passes. Why is this a bad idea and how should this society of classes be built? \\[.1in]
+
+    It is better to favor object composition to construct the related subclasses. One reason for this is because these sorts of subclasses tend to have a lot of overlapping properties, whilst potentially having few values that they all have in common with a shared superclass. \\[.1in]
+    When inheritance is used to implement a society, multi-inheritance becomes a necessity to compose classes with similar properties. This requirement is exaserbated if the classes are to inherit from a relatively basic superclass. Also, not all languages support multi-inheritance. Without object composition, complex inheritance heirarchies can also arise where unneccessary. \\[.1in]
+    Consider the set of classes Person, Employee, Manager and Consultant. We can reason that a heirarchy of Person > Employee > Manager is reasonable. However a Consultant cannot cleanly inherit from Employee or Manager. They do not directly work for the firm so they do not have their own parking spot. Ignoring parking spot, it is also improper to have Consultant inherit bonus from Manager, because a Consultant is not a Manager and therefore a suggestive inheritance does not make sense. \\[.1in]
+    \begin{verbatim}
+        class Person:
+            name
+            age
+
+        class Employee < Person:
+            salary
+            parking_space
+
+        class Manager < Employee:
+            bonus
+
+        class Consultant < Person:
+            salary
+            bonus
+    \end{verbatim}
+    \pagebreak
+    Person, Worker, Manager and Consultant should instead be composed of the properties name, age, salary, parking\_space and bonus. No direct relations need to be implied, the classes are just clearly constructed with what they need.
+    \begin{verbatim}
+        propset Human:
+            name
+            age
+
+        propset Worker:
+            salary
+
+        propset ParkingSpot:
+            parking_space
+
+        propset Perks:
+            bonus
+
+        class Person:
+            endow Human
+
+        class Worker:
+            endow Human, Worker, ParkingSpot
+
+        class Manager:
+            endow Human, Worker, ParkingSpot, Perks
+
+        class Consultant:
+            endow Human, Worker, Perks
+    \end{verbatim}
+    \pagebreak
+    \item Write in Java, Python, JavaScript, and C++, a module with a function called nextOdd (or next\_odd or next-odd depending on the naming conventions of the language's culture). The first time you call this subroutine you get the value 1. The next time, you get a 3, then 5, then 7, and so on. Show a snippet of code that uses this subroutine from outside the module. Is it possible to make this module hack-proof? In other words, once you compile this module, can you be sure that malicious code can't do something to disrupt the sequence of values resulting from successive calls to this function?
 \end{enumerate}
 \end{document}
