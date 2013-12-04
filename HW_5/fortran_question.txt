@@ -1,0 +1,3 @@
+The earlier version of Fortran passes all values by reference. In the sample program the value 2 is passed by reference into subroutine foo which increments it's parameter by 1. In this case, 2 is not a variable but hard-coded integer value. What seems to be happening is that when 2 is incremented as a result of pass by reference, ALL hard-coded 2's are incremented.
+
+This has the unfortunate effect of causing the print* 2 statement to print 3 instead. The more recent version of Fortran probably solves this by passing by unique reference, protecting other hard-coded variables from being changed as a side effect of a subroutine.
