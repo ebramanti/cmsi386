@@ -1,0 +1,49 @@
+It is better to favor object composition to construct the related subclasses. One reason for this is because these sorts of subclasses tend to have a lot of overlapping properties, whilst potentially having few values that they all have in common with a shared superclass. 
+
+When inheritance is used to implement a society, multi-inheritance becomes a necessity to compose classes with similar properties. This requirement is exaserbated if the classes are to inherit from a relatively basic superclass. Also, not all languages support multi-inheritance. Without object composition, complex inheritance heirarchies can also arise where unneccessary. 
+
+Consider the set of classes Person, Employee, Manager and Consultant. We can reason that a heirarchy of Person > Employee > Manager is reasonable. However a Consultant cannot cleanly inherit from Employee or Manager. They do not directly work for the firm so they do not have their own parking spot. Ignoring parking spot, it is also improper to have Consultant inherit bonus from Manager, because a Consultant is not a Manager and therefore a suggestive inheritance does not make sense.
+
+class Person:
+	name
+	age
+
+class Employee < Person:
+	salary
+	parking_space
+
+class Manager < Employee:
+	bonus
+
+class Consultant < Person:
+	salary
+	bonus
+
+Person, Worker, Manager and Consultant should instead be composed of the properties name, age, salary, parking_space and bonus. No direct relations need to be implied, the classes are just clearly constructed with what they need. 
+
+propset Human:
+	name
+	age
+
+propset Worker:
+	salary
+
+propset ParkingSpot:
+	parking_space
+
+propset Perks:
+	bonus
+
+class Person:
+	endow Human
+
+class Worker:
+	endow Human, Worker, ParkingSpot
+
+class Manager:
+	endow Human, Worker, ParkingSpot, Perks
+
+class Consultant:
+	endow Human, Worker, Perks
+
+
