@@ -1,3 +1,5 @@
 def nextOdd():
 	state = {'x': -1}
-	return lambda x: state['x'] += 2
+	def f(): state['x'] += 2; return state['x']
+	return f
+	# NOT A MODULEEEEE WHYYYYYYYYYYYYY
