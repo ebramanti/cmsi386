@@ -2,13 +2,13 @@
 1, [2, 3, 4]
 
 (b)
-2, [2, 4, 4]
+2, [2, 2, 4]
 
 (c)
 2, [2, 2, 4]
 
 (d)
-2, [2, 2, 4]
+1, [2, 3, 4]
 
 
 Code:
@@ -19,8 +19,11 @@ sub foo(a, b) {
 	a = x + 1;
 	b++;
 }
-	
 
 foo(y[x], x);
-
 print x, y;
+
+foo(3, 1)
+2, [2, 2, 4]
+
+Reference: Argument and parameter are one, through passing the address of the argument.
