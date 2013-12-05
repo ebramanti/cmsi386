@@ -1,0 +1,14 @@
+The problem that we run into here is that structural equivalence reles on the comparison of the environment that a class (or struct) occupies. The compiler will presumably check the primitive properties of A and B and say that they are easily interchangable as int y; \equiv int y;. The problem comes when the non-primitive types are checked, A has a property that is a pointer to a B whereas B has a property that is a pointer to an A.
+
+So their environments are similar in the sense that both classes can say "I have an int named y and I point to this other class that points to me back named x". But they are not both able to say "I have an int named y and I point to a SomeClass named x". The latter is a more important/stronger in the context of using one class as another and is subsequently how structural equivalence comparisons are carried out by the compiler. So the compiler says I cannot allow A to pass as a B because their environments are not the same; they only act the same w.r.t. class A and class B.
+
+The environments are the same in the sense that I can say:
+
+struct A {B* x; int y;};
+struct B {A* x; int y;};
+
+int foo (A z) {
+	return z.y + z.x.y
+}
+
+And calling foo with an A or a B would work in both cases. Basically, from a "what I expect this function to do successfully" point of view passing an A as a B is no problem, but w.r.t. their individual environments they are not equivalent.
