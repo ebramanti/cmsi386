@@ -3,6 +3,7 @@
 \usepackage{enumitem}
 \usepackage{verbatim}
 \usepackage[T1]{fontenc}
+\usepackage{amsmath}
 \setlist{parsep=0pt, listparindent=\parindent}
 \title{CMSI 386 Homework \#5}
 \author{Zane Kansil \& Edward Bramanti}
@@ -12,16 +13,14 @@
     \setcounter{enumi}{2}
     \item Write a tail-recursive function to compute the minimum value of an array in Python, C, JavaScript, and Go. \\*
     \linebreak
-    Python:
+    (a) Python:
     \verbatiminput{tail_recursive.py}
-    \pagebreak
-    C:
+    (b) C:
     \verbatiminput{tail_recursive.c}
     \pagebreak
-    JavaScript:
+    (c) JavaScript:
     \verbatiminput{tail_recursive.js}
-    \pagebreak
-    Go:
+    (d) Go:
     \verbatiminput{tail_recursive.go}
     \pagebreak
     \item Here's some code in some language that looks exactly like C++. It's sort of like Go, also, except the pointer types are kind of backwards. It is defining two mutually recursive types, A and B.
@@ -29,9 +28,23 @@
         struct A {B* x; int y;};
         struct B {A* x; int y;};
     \end{verbatim}
-    Suppose the rules for this language stated that this language used structural equivalence for types. How would you feel if you were a compiler and had to typecheck an expression in which an A was used as a B? What problem might you run into?
+    Suppose the rules for this language stated that this language used structural equivalence for types. How would you feel if you were a compiler and had to typecheck an expression in which an A was used as a B? What problem might you run into? \\*[.1in]
+    The problem that we run into here is that structural equivalence reles on the comparison of the environment that a class (or struct) occupies. The compiler will presumably check the primitive properties of A and B and say that they are easily interchangable as \texttt{int y;} is equivalent to \texttt{int y;}. The problem comes when the non-primitive types are checked, A has a property that is a pointer to a B whereas B has a property that is a pointer to an A. \\
+
+    So their environments are similar in the sense that both classes can say ``I have an int named y and I point to this other class that points to me back named x". But they are not both able to say ``I have an int named y and I point to a SomeClass named x". The latter is a more important/stronger in the context of using one class as another and is subsequently how structural equivalence comparisons are carried out by the compiler. So the compiler says I cannot allow A to pass as a B because their environments are not the same; they only act the same w.r.t. class A and class B. \\
+
+    The environments are the same in the sense that I can say:\\
+    \begin{verbatim}
+        struct A {B* x; int y;};
+        struct B {A* x; int y;};
+
+        int foo (A z) {
+            return z.y + z.x.y
+        }
+    \end{verbatim}
+    And calling foo with an A or a B would work in both cases. Basically, from a ``what I expect this function to do successfully" point of view passing an A as a B is no problem, but w.r.t. their individual environments they are not equivalent.
     \pagebreak
-    \item Write a program in C++, JavaScript, Python, Ruby, Scala, or Clojure that determines the order in which subroutine arguments are evaluated.\\*[.1in]
+    \item Write a program in C++, JavaScript, Python, Ruby, Scala, or Clojure that determines the order in which subroutine arguments are evaluated.\\*[.2in]
     We decided to write our subroutine in Javascript.
     \verbatiminput{subroutine.js}
     \pagebreak
@@ -46,7 +59,7 @@
             for (j = 1; j <= 10; j++) foo();
         }
     \end{verbatim}
-    Local variable i in subroutine foo is never initialized. On many systems, however, the program will display repeatable behavior, printing 0 1 2 3 4 5 6 7 8 9. Suggest an explanation. Also explain why the behavior on other systems might be different, or nondeterministic. \\
+    Local variable i in subroutine foo is never initialized. On many systems, however, the program will display repeatable behavior, printing 0 1 2 3 4 5 6 7 8 9. Suggest an explanation. Also explain why the behavior on other systems might be different, or nondeterministic. \\[.3in]
 
     First, \texttt{main()} is placed on the stack. Then, \texttt{foo()} is called, placing it on top of \texttt{main()} in the stack. Somewhere in the stack space of \texttt{foo()}, \texttt{int i} is declared, but not initialized. If you initialize a variable without a value, then it seems to not change anything about the specific stack space that it occupies. Then, i is incremented. Each time \texttt{foo()} is called, the new stack frame ends up in the exact same storage space as the previous call. Due to the fact that initializing a variable (\texttt{int i}) does not change the stack space that it occupies, the incrementations to \texttt{int i} of the previous \texttt{foo()} call are preserved. \\
 
@@ -78,17 +91,21 @@
         f(y[x], x);
         print x, y;
     \end{verbatim}
-    Not yet complete.
         \item[(a)]
         \texttt{1, [2, 3, 4]}
         \item[(b)]
         \texttt{2, [2, 2, 4]}
         \item[(c)]
-        \texttt{2, [2, 2, 4]}
+        \texttt{2, [2, 3, 4]}
         \item[(d)]
-        \texttt{1, [2, 3, 4]}
+        \texttt{2, [2, 3, 3]}
     \pagebreak
-    \item I've written a simple JavaScript queue type that does not use encapsulation. Can we achieve encapsulation using the module system in node.js? If so, implement it. If not, state why not.
+    \item I've written a simple JavaScript queue type that does not use encapsulation. Can we achieve encapsulation using the module system in node.js? If so, implement it. If not, state why not. \\*[.1in]
+    We can achieve encapsulation using the module system in node.js, using the example code below. \\*[.1in]
+    queue.js \\
+    \verbatiminput{queue.js}
+    queue\_tests.js \\
+    \verbatiminput{queue_tests.js}
     \pagebreak
     \item EXTRA CREDIT: It is certainly possible to make a Person class, then subclasses of Person for different jobs, like Manager, Employee, Student, Monitor, Advisor, Teacher, Officer and so on. But this is a bad idea, even though the IS-A test passes. Why is this a bad idea and how should this society of classes be built? \\[.1in]
 
@@ -150,5 +167,6 @@
     \verbatiminput{nextOdd.js}
     C++:
     \verbatiminput{nextOdd.cpp}
+    The modules are hack-proof, because they are all engineered so the value \texttt{x} is protected, using standards from each different language.
 \end{enumerate}
 \end{document}

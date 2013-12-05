@@ -1,9 +1,8 @@
 //http://play.golang.org/p/0gyqEAuqhn
-
 package main
-
 import "fmt"
-
+//  Left because Go wouldn't compile 
+//  without a function call to findMinValue.
 func main() {
     a := []int{1,2,3}
     b := []int{21,7,12,2}
@@ -15,7 +14,6 @@ func main() {
     findMinValue(c, 4)
     findMinValue(d, 8)
 }
-
 
 func findMinValue(a []int, length int) {
     minValueHelper(a, length, 0, a[0])
@@ -33,6 +31,5 @@ func minValueHelper(a []int, length int, i int, sofar int) int {
     } else if (a[i] < sofar) {
         sofar = a[i]
     }
-    
     return minValueHelper(a, length, i + 1, sofar)
 }
