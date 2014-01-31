@@ -16,12 +16,10 @@ These learning outcomes are taken from the syllabus. Students will:
 
 There were five assignments throughout the course of the semester.
 
-#### Assignment 1: Python
-#### Assignment 2: Javascript
-#### Assignment 3: Go
+#### Assignments 1-3: Python, Javascript, and Go
 
 For these first three assignments, we completed the same questions in each language to demonstrate an understanding of the different styles each language employs.
 
-#### Assignment 4/5: Assorted principles of Programming Languages
+#### Assignments 4 & 5: Assorted principles of Programming Languages
 
-Assignments 4 and 5 involved studying overarching concepts of programming languages. This included written responses as well as justifications for why certain paradigms are utilized in today's coding landscape.
+Assignments 4 and 5 involved studying overarching concepts of programming languages. This included written responses as well as justifications for why certain paradigms are utilized in today's coding landscape. NOTE: These assignments still have some TODOs for certain functions.
