@@ -1,7 +1,7 @@
 CMSI 386: Programming Languages
 ===============================
 
-Assignments from Programming Languages collaboratively completed with Zane Kansil (@AuthorOfTheSurf). We took this course during the fall semester in 2013.
+Assignments from Programming Languages collaboratively completed with Zane Kansil ([@AuthorOfTheSurf](http://github.com/AuthorOfTheSurf)). We took this course during the fall semester in 2013.
 
 ###	Learning Outcomes
 
